@@ -4,7 +4,8 @@
   "description": "an app to help you connect",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack-dev-server --mode=development",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
@@ -13,10 +14,17 @@
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.1",
+    "firebase": "^7.6.2",
     "path": "^0.12.7",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "webpack-dev-server": "^3.10.1"
   }
 }

@@ -1,0 +1,12 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+
+main {
+    margin: 10vh auto;
+    padding: 20px;
+    width: 80vw;
+    height: 80vh;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 10px rgba(0,0,0,.02);
+}
