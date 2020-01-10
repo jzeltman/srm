@@ -6,7 +6,7 @@ import User from '../user/user';
 
 import './header.css';
 
-const Header = (user) => {
+const Header = ({user}) => {
     return (
         <header>
             <Menu user={user} />
