@@ -1,0 +1,14 @@
+#Dashboard {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+#Dashboard-Content {
+    flex-basis: 70%;
+    overflow: auto;
+
+    @media (min-width: 700px) {
+        flex-basis: calc(100% - 300px);
+    }
+}

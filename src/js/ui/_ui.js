@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import firebase from 'firebase';
-import config from '../../../firebase.config.js';
 
 import Header from './components/header/header';
 import Splash from './components/splash/splash';
@@ -10,22 +9,33 @@ import Footer from './components/footer/footer';
 
 import './ui.css';
 
-firebase.initializeApp(config);
+import { db, contacts } from '../db/db';
+
+let userDataFetched = false;
 
 const UI = () => {
     const [user, setUser] = useState(null);
+    const [data, setData] = useState(null);
 
     useEffect(() => {
         firebase.auth().onAuthStateChanged((firebaseUser) => {
             if (firebaseUser) setUser(firebaseUser);
-            else setUser(null)
+            else setUser(null);
+            if (!userDataFetched) getUserData(firebaseUser.uid);
         });
     });
 
+    const getUserData = (uid) => {
+        userDataFetched = true;
+        contacts.read(uid,(contactsData) => setData(contactsData));
+    }
+        
     return (
         <>
             <Header user={user} />
-            {!user ? <Splash /> : <Dashboard user={user} />}
+            <main>
+                {!user ? <Splash /> : <Dashboard user={user} data={data} db={db} />}
+            </main>
             <Footer />
         </>
     )

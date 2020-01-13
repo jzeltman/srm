@@ -4,11 +4,11 @@ import Menu from '../menu/menu';
 import Logo from '../logo/logo';
 import User from '../user/user';
 
-import './header.css';
+import './header.scss';
 
 const Header = ({user}) => {
     return (
-        <header>
+        <header id="Header">
             <Menu user={user} />
             <Logo />
             <User user={user} />

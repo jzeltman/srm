@@ -1,0 +1,45 @@
+#Contact {
+    height: 100%;
+    padding: 25px;
+
+    .Contact-Item {
+        margin: 25px;
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: .9rem;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+
+            &:active {
+                border-color: #aaa;
+            }
+        }
+        
+        &.Advanced {
+            display: block;
+            text-align: center;
+        }
+    }
+    
+    button {
+        margin: 25px;
+        padding: 15px;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        
+        &:hover, &:active {
+            border-color: #aaa;
+        }
+    }
+}

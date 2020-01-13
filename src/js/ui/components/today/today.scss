@@ -1,0 +1,48 @@
+#Today {
+    h1 {
+        margin: 50px 50px 0;
+    }
+
+    &-Contacts {
+        padding: 0;
+        margin: 50px calc(50px - 1rem);
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            flex-grow: 1;
+            margin: 1rem;
+            min-width: 200px;
+            cursor: pointer;
+
+            &:hover {
+                border-collapse: #999;
+                background-color: #f9f9f9;
+            }
+
+            div {
+                padding: 13px;
+            }
+
+            strong {
+                display: block;
+            }
+
+            span {
+                clear: both;
+                display: inline-block;
+                padding: 5px;
+                margin: 5px 0 0;
+                background-color: #ccc;
+                border-radius: 5px;
+
+                &[data-frequency="daily"] {
+                    background-color: #3ae39a;
+                }
+            }
+        }
+    }
+}

@@ -8,7 +8,7 @@ module.exports = {
         contentBase: path.join(__dirname, 'public'),
         compress: true,
         port: 3000,
-        // hot: true,
+        hot: true,
     },
     entry: './src/js/index.js',
     output: {
@@ -26,6 +26,22 @@ module.exports = {
                 test: /\.css$/i,
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
+            {
+                test: /\.s[ac]ss$/i,
+                use: ['style-loader','css-loader','sass-loader'],
+              },
+            {
+                test: /\.(gif|png|jpe?g|svg|webp)$/i,
+                use: [
+                  'file-loader',
+                  {
+                    loader: 'image-webpack-loader',
+                    options: {
+                        disable: true
+                    },
+                  },
+                ],
+              }
         ]
     },
     plugins: [
