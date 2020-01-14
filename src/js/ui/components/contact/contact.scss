@@ -35,6 +35,18 @@
             .Contact-Item { width: 100%; }
         }
     }
+
+    header {
+        margin: -25px -25px 50px;
+        background-color: var(--grey-1); 
+        background-size: cover;
+        background-position: center;
+        min-height: 150px;
+
+        &.full {
+            min-height: 300px;
+        }
+    }
     
     button {
         margin: 25px;

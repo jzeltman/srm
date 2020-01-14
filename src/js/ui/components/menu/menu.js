@@ -1,9 +1,11 @@
 import React from 'react';
-import './menu.css';
+import './menu.scss';
 
 const Menu = () => {
     return (
-        <div>Menu</div>
+        <div id="Menu">
+            <i className="fas fa-bars"></i>
+        </div>
     )
 }
 

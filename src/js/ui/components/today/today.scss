@@ -15,16 +15,43 @@
             border-radius: 5px;
             flex-grow: 1;
             margin: 1rem;
-            min-width: 200px;
             cursor: pointer;
+            min-width: 200px;
+            min-height: 275px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow: hidden;
+            
+            @media (min-width: 600px) {
+                min-width: 200px;
+                max-width: 300px;
+            }
+            
+            @media (min-width: 800px) {
+                min-width: 250px;
+                max-width: 400px;
+            }
+            
+            @media (min-width: 1000px) {
+                min-width: 250px;
+                max-width: 330px;
+            }
 
             &:hover {
                 border-collapse: #999;
                 background-color: #f9f9f9;
             }
 
+            img { 
+                max-width: 100%;
+            }
+
             div {
                 padding: 13px;
+                background-color: #fff;
             }
 
             strong {

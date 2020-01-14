@@ -1,0 +1,37 @@
+#File-Upload {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+    background-color: rgba(0,0,0,.05);
+    
+    &-Modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 20vw;
+        min-height: 150px;
+        background: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px 10px rgba(0,0,0,.1);
+        border-radius: 10px;
+        transform: translate3d(-50%, -50%, 0);
+        z-index: 100;
+    }
+
+    &-Close {
+        float: right;
+    }
+
+    form {
+        margin: 50px;
+
+        label {
+            margin-bottom: 13px;
+        }
+    }
+}

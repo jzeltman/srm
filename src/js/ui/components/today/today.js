@@ -13,12 +13,14 @@ const Today = (props) => {
         let todaysContacts = [];
         props.contacts.forEach((contact,key) => {
             if (timeToContact(contact.last_update,contact.frequency)) {
+
+                let liStyle = { backgroundImage: `url(${contact.PHOTO})` }
                 todaysContacts.push((
                     <li key={key}
-                        className="Today-Contact-Item" 
+                        className={`Today-Contact-Item ${contact.PHOTO ? 'photo' : 'empty'}`}
                         onClick={e => props.changeContent(contact)}
+                        style={liStyle}
                     >
-                        <img src={contact.PHOTO} />
                         <div>
                             <strong>{contact.FN}</strong>
                             <span data-frequency={contact.frequency}>{contact.frequency}</span>

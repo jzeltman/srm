@@ -9,7 +9,6 @@ import Footer from './components/footer/footer';
 import './ui.scss';
 
 const UI = ({passedUID}) => {
-    console.log('UI:', passedUID)
     const [uid, setUid] = useState(passedUID);
     
     useEffect(() => {

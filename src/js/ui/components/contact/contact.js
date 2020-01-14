@@ -1,21 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import { saveContact } from '../../../db/actions/contact';
+import FileUpload from '../file-upload/file-upload';
+import { saveContact, savePhoto } from '../../../db/actions/contact';
 import { contacts } from '../../../db/db';
+
 import './contact.scss';
 
 const Contact = (props) => {
-    let advancedMarkup;
     const [contact,setContact] = useState(props.contact);
     const [advanced,setAdvanced] = useState(false);
+    const [upload,setUpload] = useState(false);
     
     useEffect(() => {
-        if (contact.uid !== props.contact.uid) {
+        if (
+            contact.uid !== props.contact.uid ||
+            contact.PHOTO !== props.contact.PHOTO
+        ) {
             setContact(props.contact);
             setAdvanced(false);
         }
     });
+
+    let advancedMarkup;
+    let fileUploadMarkup;
+    let headerBackgroundCSS = contact.PHOTO === '' ?
+        { backgroundColor: '#ccc' } :
+        { backgroundImage: `url(${contact.PHOTO})` };
     
     const onCancelHandler = e => props.changeContent('today');
     const onChangeHandler = e => setContact({ ...contact, [e.target.name]: e.target.value });
@@ -27,7 +38,23 @@ const Contact = (props) => {
             props.changeContent('today');
         }
     }
+
     const onSaveHandler = e => props.saveContact(contact);
+    const togglePhotoModal = e => setUpload(!upload);
+    const photoSubmitHandler = file => {
+        console.log('photoSubmitHandler',file);
+        props.savePhoto(file);
+        closePhotoModal();
+    }
+    const closePhotoModal = () => setUpload(false);
+
+    const fileUploadConfig = {
+        label: 'Upload/Change Profile',
+        accept: 'image/*',
+        submitHandler: photoSubmitHandler,
+        submitLabel: 'Upload',
+        cancelClose: closePhotoModal
+    }
 
     if (!advanced) {
         advancedMarkup = (
@@ -42,13 +69,18 @@ const Contact = (props) => {
             onClick={onDeleteHandler}>Delete</button>
     )
 
+    if (upload) fileUploadMarkup = <FileUpload config={fileUploadConfig} />
+
     return (
         <div id="Contact">
-            <header>
+            <header style={headerBackgroundCSS} className={contact.PHOTO === '' ? 'empty' : 'full'}>
                 <button onClick={onCancelHandler} id="Contact-Return">
                     <i className="fas fa-arrow-left"></i>
                 </button>
-                <img src={contact.PHOTO} id="Contact-Profile" />
+                <button onClick={togglePhotoModal} id="Contact-Profile-Upload">
+                    <i className="fas fa-upload"></i>
+                </button>
+                {fileUploadMarkup}
             </header>
             <div className="Contact-Item">
                 <label htmlFor="FN">Full Name</label>
@@ -113,7 +145,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        saveContact: contact => dispatch(saveContact(contact))
+        saveContact: contact => dispatch(saveContact(contact)),
+        savePhoto: photo => dispatch(savePhoto(photo))
     }
 }
 

@@ -9,6 +9,7 @@ import { setUser } from './actions/user';
 // import { read as userRead } from './users/read';
 // import { update as userUpdate } from './users/update';
 // import { delete as userDelete } from './users/delete';
+import { create as photoCreate } from './photo/create';
 
 import { create as contactCreate } from './contacts/create';
 import { read as contactRead } from './contacts/read';
@@ -39,6 +40,10 @@ export const contacts = {
     read: contactRead,
     update: contactUpdate,
     destroy: contactDestroy
+};
+
+export const photos = {
+    create: photoCreate
 }
 
 

@@ -1,5 +1,5 @@
-import { SET_CONTACT, SAVE_CONTACT } from '../../constants';
-import { contacts } from '../db';
+import { SET_CONTACT, SAVE_CONTACT, SAVE_PHOTO, RECEIVE_PHOTO } from '../../constants';
+import { contacts, photos } from '../db';
 
 const contact = (state = {}, action) => {
     switch (action.type) {
@@ -7,12 +7,26 @@ const contact = (state = {}, action) => {
             return {
                 ...action.contact
             }
+            break;
         } case SAVE_CONTACT: {
             if (action.contact.uid === '') contacts.create(action.contact);
             else contacts.update(action.contact);
             return {
                 ...action.contact
             }
+            break;
+        } case SAVE_PHOTO: {
+            photos.create(action.photo, state);
+            return { ...state }
+            break;
+        } case RECEIVE_PHOTO: {
+            if (action.contact.uid === state.uid) {
+                return {
+                    ...state,
+                    PHOTO: action.photo
+                }
+            } else { return { ...state } }
+            break;
         } default: {
             return state;
         }

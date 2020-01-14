@@ -1,0 +1,9 @@
+#Loading {
+    margin-left: 20px;
+
+    .Loading-Spinner {
+        animation:spin 4s linear infinite;
+    }
+}
+
+@keyframes spin { 100% { transform:rotate(360deg); } }
