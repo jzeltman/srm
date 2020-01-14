@@ -7,6 +7,7 @@ import Dashboard from './components/dashboard/dashboard';
 import Footer from './components/footer/footer';
 
 import './ui.scss';
+import '../../css/privacy.scss';
 
 const UI = ({passedUID}) => {
     const [uid, setUid] = useState(passedUID);

@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import firebase from 'firebase';
 
-import UI from './ui/_ui';
 import store from './db/store';
+import UI from './ui/_ui';
 
 // import * as serviceWorker from './serviceWorker';
 
@@ -14,9 +14,13 @@ import store from './db/store';
 // serviceWorker.unregister();
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    ReactDOM.render(
-        <Provider store={store}>
-            <UI />
-        </Provider>, 
-        document.getElementById('App'));
+    let AppEl = document.getElementById('App');
+    if (AppEl) {
+        ReactDOM.render(
+            <Provider store={store}>
+                <UI />
+            </Provider>, 
+            AppEl
+        );
+    }
 });

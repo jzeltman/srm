@@ -14,7 +14,8 @@ export const signIn = () => {
         .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
         .then(() => {
             const provider = new firebase.auth.FacebookAuthProvider();
-            provider.addScope('email,groups_access_member_info,user_age_range,user_birthday,user_friends,user_gender,user_hometown,user_likes,user_link,user_location,user_photos');
+            // provider.addScope('email,user_birthday,user_friends,user_gender,user_hometown,user_likes,user_link,user_location,user_photos');
+            // provider.addScope();
 
             return firebase.auth().signInWithPopup(provider);
         })

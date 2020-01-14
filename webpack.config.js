@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-console.log('index.html path',path.join(__dirname, '/src/index.html'))
+
 module.exports = {
     mode: process.env.NODE_ENV || 'production',
     devServer: {
@@ -45,10 +45,15 @@ module.exports = {
         ]
     },
     plugins: [
-        new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
             title: 'Social Relationship Manager',
             template: path.join(__dirname, '/src/index.html')
-        })
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Social Relationship Manager | Privacy',
+            template: path.join(__dirname, '/src/privacy.html'),
+            filename: 'privacy.html'
+        }),
+        new MiniCssExtractPlugin(),
     ]
 };
