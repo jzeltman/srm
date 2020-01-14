@@ -1,35 +1,30 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux'
+
+import { sortContacts } from '../../../db/actions/contacts';
 import timeToContact from '../../../app/utils/timeToContact';
 import './contact-list.scss';
 
-const ContactList = ({data, changeContent}) => {
-    const alphaSort = () => {
-        return data.sort((a,b) => {
-            console.log(`a:${a.FN}\nb:${b.FN}`)
-            if (a.FN < b.FN) return -1;
-            if (a.FN > b.FN) return 1;
-            else return 0;
-        })
-    }
+const ContactList = (props) => {
     const renderContactList = () => {
-        if (data === null || data.length === 0) return <li>Look's like you don't have any contacts. Let's make one</li>;
-        else {
-            const sorted = alphaSort();
-            return sorted.map((contact,key) => {
+        if (props.contacts === null || props.contacts.length === 0) {
+            return <li>Look's like you don't have any contacts. Let's make one</li>;
+        } else {
+            return props.contacts.map((contact,key) => {
                 const status = timeToContact(contact.last_update,contact.frequency);
                 const statusClassName = status ? "fa-user-clock" : "fa-thumbs-up";
                 return (
-                    <li key={key} onClick={() => changeContent(contact)} className="Contact-List-Item">
+                    <li 
+                        key={key} 
+                        onClick={() => props.changeContent(contact)} 
+                        className={`Contact-List-Item frequency-${contact.frequency}`}
+                    >
                         <span>{contact.FN}</span> 
                         <span><i className={`fas ${statusClassName}`}></i></span> 
                     </li>
                 );
             });
         }
-    }
-
-    const sortHandler = e => {
-        console.log('sortHandler',e);
     }
 
     return (
@@ -41,7 +36,7 @@ const ContactList = ({data, changeContent}) => {
                 </h2>
                 <div>
                     <label htmlFor="for">Sort</label>
-                    <select name="sort" onChange={sortHandler}>
+                    <select name="sort" onChange={e => props.sortContacts(e.target.value)}>
                         <option value="alpha">A-Z</option>
                         <option value="group">Group</option>
                         <option value="date">Date</option>
@@ -49,8 +44,8 @@ const ContactList = ({data, changeContent}) => {
                 </div>
             </header>
             <ul id="Contact-List-Items">
-                <li className="Contact-List-Admin" onClick={() => changeContent('import')}>Import Contact <i className="fas fa-file-import"></i></li>
-                <li className="Contact-List-Admin" onClick={() => changeContent('new')}>New Contact <i className="fas fa-user-plus"></i></li>
+                <li className="Contact-List-Admin" onClick={() => props.changeContent('import')}>Import Contact <i className="fas fa-file-import"></i></li>
+                <li className="Contact-List-Admin" onClick={() => props.changeContent('new')}>New Contact <i className="fas fa-user-plus"></i></li>
                 {renderContactList()}
             </ul>
             <footer>
@@ -61,4 +56,22 @@ const ContactList = ({data, changeContent}) => {
     )
 }
 
-export default ContactList;
+const mapStateToProps = state => {
+    return {
+        contact: state.contact,
+        contacts: state.contacts
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        sortContacts: sort => {
+            dispatch(sortContacts(sort))
+        }
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ContactList);

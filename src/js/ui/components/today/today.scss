@@ -5,7 +5,7 @@
 
     &-Contacts {
         padding: 0;
-        margin: 50px calc(50px - 1rem);
+        margin: calc(50px - 1rem) calc(50px - 1rem) 50px;
         list-style: none;
         display: flex;
         flex-wrap: wrap;
@@ -34,14 +34,25 @@
             span {
                 clear: both;
                 display: inline-block;
-                padding: 5px;
+                padding: 7px;
+                font-size: .9rem;
+                font-weight: bold;
                 margin: 5px 0 0;
-                background-color: #ccc;
+                background-color: var(--color-grey);
                 border-radius: 5px;
+                color: #fff;
 
-                &[data-frequency="daily"] {
-                    background-color: #3ae39a;
+                &.Contact-Group { 
+                    margin-left: 10px;
+                    color: #444;
                 }
+
+                &[data-frequency="daily"] { background-color: var(--color-1); }
+                &[data-frequency="weekly"] { background-color: var(--color-2); }
+                &[data-frequency="monthly"] { background-color: var(--color-3); }
+                &[data-frequency="quarterly"] { background-color: var(--color-4); }
+                &[data-frequency="semi-annually"] { background-color: var(--color-5); }
+                &[data-frequency="annually"] { background-color: var(--color-6); }
             }
         }
     }

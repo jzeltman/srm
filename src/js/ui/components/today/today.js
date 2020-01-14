@@ -1,24 +1,28 @@
 import React from 'react';
+import { connect } from 'react-redux'
+
 import timeToContact from '../../../app/utils/timeToContact';
 
 import './today.scss';
 
 const Today = (props) => {
+    console.log('Today props:', props)
     let content;
 
     const renderContacts = () => {
         let todaysContacts = [];
-        props.data.forEach((contact,key) => {
+        props.contacts.forEach((contact,key) => {
             if (timeToContact(contact.last_update,contact.frequency)) {
                 todaysContacts.push((
                     <li key={key}
                         className="Today-Contact-Item" 
-                        onClick={e => props.changeContent(e,contact)}
+                        onClick={e => props.changeContent(contact)}
                     >
                         <img src={contact.PHOTO} />
                         <div>
                             <strong>{contact.FN}</strong>
                             <span data-frequency={contact.frequency}>{contact.frequency}</span>
+                            <span data-group={contact.group} className="Contact-Group">{contact.group}</span>
                         </div>
                     </li>
                 )); 
@@ -29,8 +33,7 @@ const Today = (props) => {
             <ul id="Today-Contacts">{todaysContacts}</ul>
         )
     }
-    console.log('props:', props)
-    if (props.data === null) content = <span id="Today-Contacts">You're doing great!</span>;
+    if (props.contacts === null) content = <span id="Today-Contacts">You're doing great!</span>;
     else content = renderContacts();
     
     return (
@@ -41,4 +44,22 @@ const Today = (props) => {
     )
 }
 
-export default Today;
+const mapStateToProps = state => {
+    return {
+        contact: state.contact,
+        contacts: state.contacts
+    }
+}
+
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         setContact: id => {
+//             dispatch(setContact(id))
+//         }
+//     }
+// }
+
+export default connect(
+    mapStateToProps,
+    null
+)(Today);

@@ -1,6 +1,10 @@
 import firebase from 'firebase';
 import config from '../../../firebase.config';
 
+import store from './store';
+import { setUser } from './actions/user';
+
+
 // import { create as userCreate } from './users/create';
 // import { read as userRead } from './users/read';
 // import { update as userUpdate } from './users/update';
@@ -11,12 +15,24 @@ import { read as contactRead } from './contacts/read';
 import { update as contactUpdate } from './contacts/update';
 import { destroy as contactDestroy } from './contacts/delete';
 
-firebase.initializeApp(config);
-export const db = firebase.firestore();
+import { getContacts } from './actions/contacts';
 
-const DB = () => {
-    let userDataFetched = false;
-}
+let userDataFetched = false;
+
+firebase.initializeApp(config);
+
+firebase.auth().onAuthStateChanged((firebaseUser) => {
+    if (firebaseUser) {
+        store.dispatch(setUser(firebaseUser));
+        if (!userDataFetched) {
+            contactRead(firebaseUser.uid,(contactsData) => {
+                store.dispatch(getContacts(contactsData))
+            });
+        }
+    } else store.dispatch(setUser(null));
+});
+
+export const db = firebase.firestore();
 
 export const contacts = {
     create: contactCreate,

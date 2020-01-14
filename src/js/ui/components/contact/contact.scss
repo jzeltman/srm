@@ -28,6 +28,12 @@
             display: block;
             text-align: center;
         }
+
+        &-Group {
+            display: flex;
+
+            .Contact-Item { width: 100%; }
+        }
     }
     
     button {
