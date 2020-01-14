@@ -1,0 +1,24 @@
+#Splash {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    
+    button {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+
+        &:hover {
+            border-color: var(--color-grey);
+            background-color: var(--color-grey-hover);
+            cursor: pointer;
+        }
+
+        i {
+            margin-left: 5px;
+        }
+    }
+}

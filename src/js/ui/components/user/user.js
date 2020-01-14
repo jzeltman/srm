@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
 import firebase from 'firebase';
 
-import { signOut } from '../../../db/actions/user';
+import { signOut, signIn } from '../../../db/actions/user';
 
 import './user.scss';
 
@@ -13,22 +13,6 @@ const User = (props) => {
     const [menu,setMenu] = useState(false);
 
     let menuMarkup;
-    
-    const provider = new firebase.auth.FacebookAuthProvider();
-    provider.addScope('email,groups_access_member_info,user_age_range,user_birthday,user_friends,user_gender,user_hometown,user_likes,user_link,user_location,user_photos');
-    
-    const signUpHandler = e => {
-        firebase.auth().signInWithPopup(provider).then((result) => {
-            setToken(result.credential.accessToken)
-            setUser(result.user)
-        }).catch((error) => console.error('error',error));
-    };
-
-    const signOutHandler = e => {
-        console.log('signOutHandler:', e)
-        firebase.auth().signOut();
-        props.signOut();
-    }
 
     const toggleMenu = e => setMenu(!menu);
 
@@ -43,7 +27,7 @@ const User = (props) => {
                 <span>Edit Profile </span>
                 <i className="far fa-address-card"></i>
             </li>
-            <li onClick={signOutHandler}>
+            <li onClick={props.signOut}>
                 <span>Sign Out </span>
                 <i className="fas fa-sign-out-alt"></i>
             </li>
@@ -52,7 +36,7 @@ const User = (props) => {
     else menuMarkup = <></>;
     
     if (!user.uid) return (
-        <div id="User-Sign-In" onClick={signUpHandler}>
+        <div id="User-Sign-In" onClick={props.signIn}>
             <span>Sign Up </span>
             <i className="fas fa-sign-in-alt"></i>
         </div>
@@ -79,7 +63,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        signOut: () => dispatch(signOut())
+        signOut: () => dispatch(signOut()),
+        signIn: () => signIn()
     }
 }
 
