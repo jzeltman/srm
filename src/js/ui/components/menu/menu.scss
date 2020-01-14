@@ -1,1 +1,11 @@
-#Menu {}
+#Menu {
+    margin: 10px 15px;
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        border-color: #ccc;
+    }
+}

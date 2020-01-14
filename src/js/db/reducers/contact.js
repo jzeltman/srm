@@ -1,4 +1,4 @@
-import { SET_CONTACT, SAVE_CONTACT, SAVE_PHOTO, RECEIVE_PHOTO } from '../../constants';
+import { SET_CONTACT, SAVE_CONTACT, SAVE_PHOTO, RECEIVE_PHOTO, SIGN_OUT_USER } from '../../constants';
 import { contacts, photos } from '../db';
 
 const contact = (state = {}, action) => {
@@ -26,6 +26,9 @@ const contact = (state = {}, action) => {
                     PHOTO: action.photo
                 }
             } else { return { ...state } }
+            break;
+        } case SIGN_OUT_USER: {
+            return {};
             break;
         } default: {
             return state;

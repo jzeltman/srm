@@ -53,14 +53,6 @@ const mapStateToProps = state => {
     }
 }
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         setContact: id => {
-//             dispatch(setContact(id))
-//         }
-//     }
-// }
-
 export default connect(
     mapStateToProps,
     null

@@ -1,0 +1,78 @@
+#User {
+    position: relative;
+    display: flex;
+    margin-right: 5px;
+
+    &-Sign-In {
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        margin: 15px;
+        padding: 7px;
+        padding: 10px;
+
+        &:hover {
+            border-color: #ccc;
+        }
+    }
+
+    &-Photo {
+        height: 40px;
+        width: 40px;
+        border-radius: 5px;
+    }
+
+    &-Name {
+        display: flex;
+        align-items: center;
+        margin: 10px;
+
+        strong {
+            margin-right: 10px;
+        }
+    }
+
+    &-Menu-Button {
+        display: flex;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        margin: 10px;
+        cursor: pointer;
+
+        &.open,
+        &:hover {
+            border-color: #ccc;
+            
+            img {
+                border-radius: 5px 0 0 5px;
+            }
+        }
+
+        &.open {
+            border-radius: 5px 5px 0 0;
+        }
+    }
+
+    &-Menu {
+        position: absolute;
+        top: 41px;
+        list-style: none;
+        margin: 10px;
+        padding: 0;
+        width: calc(100% - 20px);
+        background: #fff;
+        border: 1px solid #ccc;
+        border-top: none;
+        border-radius: 0 0 5px 5px;
+        
+        li {
+            border-top: 1px solid #ccc;
+            padding: 10px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--color-grey-hover);
+            }
+        }
+    }
+}

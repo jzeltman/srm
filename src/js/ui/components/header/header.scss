@@ -1,12 +1,11 @@
 #Header {
     width: 100vw;
-    height: 60px;
+    min-height: 60px;
     background-color: #fff;
     display: flex;
     border-bottom: 1px solid #ccc;
     box-shadow: 0 0 5px 5px rgba(0,0,0,.05);
     justify-content: space-between;
-    padding: 20px 20px 0;
 
     &-Menu-Loading {
         display: flex;

@@ -1,4 +1,4 @@
-import { GET_CONTACTS, SORT_CONTACTS, SAVE_CONTACT } from '../../constants';
+import { GET_CONTACTS, SORT_CONTACTS, SAVE_CONTACT, SIGN_OUT_USER } from '../../constants';
 import sortContacts from '../../utils/sort_contacts';
 
 const contacts = (state = [], action) => {
@@ -20,11 +20,11 @@ const contacts = (state = [], action) => {
                     return action.contact;
                 } else return contact;
             });
-            if (!exists) {
-                console.log('doesnt exists, add and sort')
-                contacts.push(action.contact);
-            }
+            if (!exists) contacts.push(action.contact);
             return sortContacts(contacts,'alpha');
+            break;
+        } case SIGN_OUT_USER: {
+            return [];
             break;
         } default: {
             return state;
