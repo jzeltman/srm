@@ -8,6 +8,8 @@ export const SAVE_CONTACT = 'SAVE_CONTACT';
 export const SAVE_PHOTO = 'SAVE_PHOTO';
 export const RECEIVE_PHOTO = 'RECEIVE_PHOTO';
 
+export const NEW_UPDATE = 'NEW_UPDATE';
+
 export const GET_CONTACTS = 'GET_CONTACTS';
 export const SORT_CONTACTS = 'SORT_CONTACTS';
 
@@ -19,3 +21,5 @@ export const DB_RECEIVE_PHOTO = 'DB_RECEIVE_PHOTO';
 export const DB_SAVE_PHOTO = 'DB_SAVE_PHOTO';
 
 export const UI_LOADING = 'UI_LOADING';
+
+export const KEY_ENTER = 13;

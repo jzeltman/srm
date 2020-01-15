@@ -94,7 +94,7 @@ export default {
     user: "",
     family: [],
     frequency: "",
-    action: "",
+    action: [],
     updates: [],
     last_udpate: null,
     next_contact: null,

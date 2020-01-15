@@ -1,6 +1,5 @@
 #Contact {
     height: 100%;
-    padding: 25px;
 
     .Contact-Item {
         margin: 25px;
@@ -52,7 +51,6 @@
     }
 
     header {
-        margin: -25px -25px 25px;
         border-bottom: 1px solid #ccc;
         display: flex;
         height: 55px;
@@ -85,12 +83,28 @@
         }
     }
 
+    section {
+        display: flex;
+        flex-direction: column;
+        padding: 25px;
+        height: calc(100% - 55px);
+        
+        @media (min-width: 1200px) {
+            flex-direction: row;
+        }
+    }
+
     &-Card {
         display: flex;
         border: 1px solid #ccc;
         border-bottom-width: 2px;
         border-radius: 10px;
         padding: 13px;
+        align-self: center;
+
+        @media (max-width: 1200px) {
+            margin: 13px 0 25px;
+        }
 
         &-Items {
             flex-grow: 1;
@@ -130,6 +144,23 @@
 
             &:hover, &:active {
                 opacity: 1;
+            }
+        }
+    }
+
+    &-Lists {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-left: 25px;
+
+        .Contact-Item {
+            flex-basis: calc(50% - 13px);
+            margin: 0;
+
+            & + .Contact-Item {
+                margin-top: 25px;
             }
         }
     }

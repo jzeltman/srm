@@ -1,4 +1,4 @@
-import { SET_CONTACT, SAVE_CONTACT, SAVE_PHOTO, RECEIVE_PHOTO, SIGN_OUT_USER } from '../../constants';
+import { SET_CONTACT, SAVE_CONTACT, SAVE_PHOTO, RECEIVE_PHOTO, SIGN_OUT_USER, NEW_UPDATE } from 'Constants';
 import { contacts, photos } from '../db';
 
 const contact = (state = {}, action) => {
@@ -29,6 +29,16 @@ const contact = (state = {}, action) => {
             break;
         } case SIGN_OUT_USER: {
             return {};
+            break;
+        } case NEW_UPDATE: {
+            console.log('NEW_UPDATE',state,action);
+            return {
+                ...state,
+                updates: [
+                    action.update,
+                    ...state.updates
+                ]
+            }
             break;
         } default: {
             return state;

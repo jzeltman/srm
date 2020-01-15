@@ -1,4 +1,4 @@
-import { SET_CONTACT, SAVE_CONTACT, SAVE_PHOTO } from '../../constants';
+import { SET_CONTACT, SAVE_CONTACT, SAVE_PHOTO, NEW_UPDATE } from 'Constants';
 import ContactModel from '../../models/contact';
 
 export const setContact = (contact) => {
@@ -12,4 +12,8 @@ export const saveContact = (contact) => {
 
 export const savePhoto = (photo) => {
     return { type: SAVE_PHOTO, photo }
+}
+
+export const newUpdate = (update) => {
+    return { type: NEW_UPDATE, update }
 }

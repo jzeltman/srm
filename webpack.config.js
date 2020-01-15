@@ -55,5 +55,12 @@ module.exports = {
             filename: 'privacy.html'
         }),
         new MiniCssExtractPlugin(),
-    ]
+    ],
+    resolve: {
+        alias: {
+            Constants: path.resolve(__dirname, './src/js/constants.js'),
+            Actions: path.resolve(__dirname, './src/js/db/actions'),
+            Reducers: path.resolve(__dirname, './src/js/db/reducers'),
+        }
+    }
 };
