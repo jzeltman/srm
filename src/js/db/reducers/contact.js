@@ -1,5 +1,5 @@
-import { SET_CONTACT, SAVE_CONTACT, SAVE_PHOTO, RECEIVE_PHOTO, SIGN_OUT_USER } from '../../constants';
-import { contacts, photos } from '../db';
+import { SET_CONTACT, SAVE_CONTACT, SAVE_PHOTO, RECEIVE_PHOTO, SIGN_OUT_USER } from 'Constants';
+import { contacts, photos } from 'DB';
 
 const contact = (state = {}, action) => {
     switch (action.type) {

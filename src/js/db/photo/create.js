@@ -1,8 +1,8 @@
 import firebase from 'firebase';
-import store from '../store';
-import { loading } from '../actions/ui';
-import { receivePhoto } from '../actions/db';
-import { saveContact } from '../actions/contact';
+import store from 'Store';
+import { loading } from 'Actions/ui';
+import { receivePhoto } from 'Actions/db';
+import { saveContact } from 'Actions/contact';
 
 export const create = (file,contact) => {
 

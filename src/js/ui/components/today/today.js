@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
 
-import timeToContact from '../../../app/utils/timeToContact';
+import timeToContact from 'Utils/timeToContact';
 
 import './today.scss';
 

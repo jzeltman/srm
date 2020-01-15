@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 
-import { sortContacts } from '../../../db/actions/contacts';
-import timeToContact from '../../../app/utils/timeToContact';
+import { sortContacts } from 'Actions/contacts';
+import timeToContact from 'Utils/timeToContact';
 import './contact-list.scss';
 
 const ContactList = (props) => {

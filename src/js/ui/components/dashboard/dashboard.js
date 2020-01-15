@@ -8,7 +8,7 @@ import Contact from '../contact/contact';
 import ContactList from '../contact-list/contact-list';
 import ImportVCard from '../import-vcard/import-vcard';
 
-import { setContact } from '../../../db/actions/contact';
+import { setContact } from 'Actions/contact';
 
 
 const Dashboard = (props) => {

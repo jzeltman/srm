@@ -1,4 +1,4 @@
-import { SET_USER, SIGN_OUT_USER } from '../../constants';
+import { SET_USER, SIGN_OUT_USER } from 'Constants';
 
 const user = (state = {}, action) => {
     switch (action.type) {

@@ -1,4 +1,4 @@
-import { db } from '../db';
+import { db } from 'DB';
 
 export const read = (uid,cb) => {
     return db.collection("contacts").where("user", "==", uid)
