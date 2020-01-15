@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux'
 
 import timeToContact from '../../../app/utils/timeToContact';
@@ -8,6 +8,10 @@ import './today.scss';
 const Today = (props) => {
     console.log('Today props:', props)
     let content;
+
+    const [tab,setTab] = useState('today');
+
+    const toggleTab = tab => setTab(tab);
 
     const renderContacts = () => {
         let todaysContacts = [];
@@ -35,12 +39,34 @@ const Today = (props) => {
             <ul id="Today-Contacts">{todaysContacts}</ul>
         )
     }
-    if (props.contacts === null) content = <span id="Today-Contacts">You're doing great!</span>;
-    else content = renderContacts();
+    if (tab === 'today') {
+        if (props.contacts === null) content = <span id="Today-Contacts">You're doing great!</span>;
+        else content = renderContacts();
+    } else if (tab === 'actions') {
+        content = <span>today's actions</span>;
+    } else if (tab === 'birthdays') {
+        content = <span>today's birthdays</span>;
+    }
     
     return (
         <div id="Today">
-            <h1>Today's Contacts</h1>
+            <header id="Today-Header">
+                <h2 className={tab === 'today' ? 'selected' : ''} 
+                    onClick={() => toggleTab('today')}>
+                    <span>Today's Contacts</span>
+                    <i className="fas fa-calendar-day"></i>
+                </h2>
+                <h2 className={tab === 'actions' ? 'selected' : ''} 
+                    onClick={() => toggleTab('actions')}>
+                    <span>Actions</span>
+                    <i className="fas fa-bell"></i>
+                </h2>
+                <h2 className={tab === 'birthdays' ? 'selected' : ''} 
+                    onClick={() => toggleTab('birthdays')}>
+                    <span>Birthdays</span>
+                    <i className="fas fa-birthday-cake"></i>
+                </h2>
+            </header>
             {content}
         </div>
     )

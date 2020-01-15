@@ -9,6 +9,7 @@
             display: block;
             margin-bottom: 5px;
             font-size: .9rem;
+            font-weight: bold;
         }
 
         select,
@@ -35,18 +36,6 @@
             .Contact-Item { width: 100%; }
         }
     }
-
-    header {
-        margin: -25px -25px 50px;
-        background-color: var(--grey-1); 
-        background-size: cover;
-        background-position: center;
-        min-height: 150px;
-
-        &.full {
-            min-height: 300px;
-        }
-    }
     
     button {
         margin: 25px;
@@ -58,6 +47,90 @@
         
         &:hover, &:active {
             border-color: #aaa;
+            background-color: var(--color-grey-hover);
+        }
+    }
+
+    header {
+        margin: -25px -25px 25px;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        height: 55px;
+        overflow: hidden;
+        border-radius: 0 6px 0 0;
+
+        h2 {
+            margin: 0 0 0 13px;
+            line-height: 55px;
+            flex: 1;
+        }
+
+        button {
+            margin: 0;
+            padding: 0 13px;
+            height: 54px;
+            min-width: 55px;
+            line-height: 55px;
+            border: none;
+            border-radius: 0;
+
+            &#Contact-Save,
+            &.Advanced {
+                border-left: 1px solid #ccc;
+            }
+        }
+
+        #Contact-Return {
+            border-right: 1px solid #ccc;
+        }
+    }
+
+    &-Card {
+        display: flex;
+        border: 1px solid #ccc;
+        border-bottom-width: 2px;
+        border-radius: 10px;
+        padding: 13px;
+
+        &-Items {
+            flex-grow: 1;
+
+            .Contact-Item {
+                margin: 0 13px 25px 25px;
+
+                label {
+                    font-size: .8rem;
+                }
+                
+                input, select {
+                    border-radius: 0;
+                    border: none;
+                    border-bottom: 1px solid #ccc;
+                    padding: 5px 0;
+                    font-size: 1.1rem;
+                }
+            }
+        }
+    }
+    
+    &-Photo {
+        background-color: var(--grey-1); 
+        background-size: cover;
+        background-position: center;
+        width: 250px;
+        height: 250px;
+        display: flex;
+        align-items: flex-end;
+        border-radius: 5px;
+
+        button {
+            margin: 7px;
+            border-radius: 4px;
+            opacity: .7;
+
+            &:hover, &:active {
+                opacity: 1;
+            }
         }
     }
 }

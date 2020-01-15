@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import FileUpload from '../file-upload/file-upload';
 import { saveContact, savePhoto } from '../../../db/actions/contact';
+import { loading } from '../../../db/actions/ui';
 import { contacts } from '../../../db/db';
 
 import './contact.scss';
@@ -73,46 +74,66 @@ const Contact = (props) => {
 
     return (
         <div id="Contact">
-            <header style={headerBackgroundCSS} className={contact.PHOTO === '' ? 'empty' : 'full'}>
+            <header>
                 <button onClick={onCancelHandler} id="Contact-Return">
                     <i className="fas fa-arrow-left"></i>
                 </button>
-                <button onClick={togglePhotoModal} id="Contact-Profile-Upload">
-                    <i className="fas fa-upload"></i>
+                <h2>{contact.FN}</h2>
+                <button 
+                    className="Advanced" 
+                    onClick={() => setAdvanced(!advanced)}
+                >
+                    <span>{advanced ? 'Hide Advanced ' : 'Show Advanced '}</span>
+                    <i className="fas fa-cog"></i>
+                </button>
+                <button id="Contact-Save" onClick={onSaveHandler}>
+                    <span>{!contact.uid ? 'Create ' : 'Save '}</span>
+                    <i className="fas fa-save"></i>
                 </button>
                 {fileUploadMarkup}
             </header>
-            <div className="Contact-Item">
-                <label htmlFor="FN">Full Name</label>
-                <input type="text" value={contact.FN} name="FN" onChange={onChangeHandler} />
-            </div>
-            <div className="Contact-Item-Group">
-                <div className="Contact-Item">
-                    <label htmlFor="frequency">Frequency</label>
-                    <select name="frequency" onChange={onChangeHandler} value={contact.frequency || "default"}>
-                        <option disabled value="default">Contact Frequency</option>
-                        <option value="daily">Daily</option>
-                        <option value="weekly">Weekly</option>
-                        <option value="monthly">Monthly</option>
-                        <option value="quarterly">Quarterly</option>
-                        <option value="semi-annually">Semi Annually</option>
-                        <option value="annually">Annually</option>
-                    </select>
+            <div id="Contact-Card">
+                <div id="Contact-Photo" className={contact.PHOTO === '' ? 'empty' : 'full'} style={headerBackgroundCSS}>
+                    <button onClick={togglePhotoModal} id="Contact-Profile-Upload">
+                        <i className="fas fa-upload"></i>
+                    </button>
                 </div>
-                <div className="Contact-Item">
-                    <label htmlFor="group">Group</label>
-                    <select name="group" onChange={onChangeHandler} defaultValue={contact.group || "default"}>
-                        <option disabled value="default">Group</option>
-                        <option value="friends">Friends</option>
-                        <option value="family">Family</option>
-                        <option value="work">Work</option>
-                        <option value="acquaintances">Acquaintances</option>
-                    </select>
+                <div id="Contact-Card-Items">
+                    <div className="Contact-Item">
+                        <label htmlFor="FN">Full Name</label>
+                        <input type="text" value={contact.FN} name="FN" onChange={onChangeHandler} />
+                    </div>
+                    <div className="Contact-Item-Group">
+                        <div className="Contact-Item">
+                            <label htmlFor="frequency">Frequency</label>
+                            <select name="frequency" onChange={onChangeHandler} value={contact.frequency || "default"}>
+                                <option disabled value="default">Contact Frequency</option>
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="quarterly">Quarterly</option>
+                                <option value="semi-annually">Semi Annually</option>
+                                <option value="annually">Annually</option>
+                            </select>
+                        </div>
+                        <div className="Contact-Item">
+                            <label htmlFor="group">Group</label>
+                            <select name="group" onChange={onChangeHandler} defaultValue={contact.group || "default"}>
+                                <option disabled value="default">Group</option>
+                                <option value="friends">Friends</option>
+                                <option value="family">Family</option>
+                                <option value="work">Work</option>
+                                <option value="acquaintances">Acquaintances</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="Contact-Item-Group">
+                        <div className="Contact-Item">
+                            <label htmlFor="last_update">Last Contact</label>
+                            <input type="date" defaultValue={contact.last_update} name="last_update" onChange={onChangeHandler} />
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div className="Contact-Item">
-                <label htmlFor="last_update">Last Contact</label>
-                <input type="date" defaultValue={contact.last_update} name="last_update" onChange={onChangeHandler} />
             </div>
             <div className="Contact-Item">
                 <label htmlFor="updates">Updates</label>
@@ -122,17 +143,6 @@ const Contact = (props) => {
                 <label htmlFor="action">Actions</label>
                 <input type="textarea" defaultValue={contact.action} name="action" onChange={onChangeHandler} />
             </div>
-            {advancedMarkup}
-            <footer>
-                <button id="Contact-Cancel" onClick={onCancelHandler}>
-                    <span>Cancel </span>
-                    <i className="fas fa-undo"></i>
-                </button>
-                <button id="Contact-Save" onClick={onSaveHandler}>
-                    <span>{!contact.uid ? 'Create ' : 'Save '}</span>
-                    <i className="fas fa-save"></i>
-                </button>
-            </footer>
         </div>
     )
 }
