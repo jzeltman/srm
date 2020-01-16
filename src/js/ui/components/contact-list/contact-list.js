@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
+import List from './list/list';
+
 import { sortContacts } from 'Actions/contacts';
 import timeToContact from 'Utils/timeToContact';
 import './contact-list.scss';
@@ -43,11 +45,7 @@ const ContactList = (props) => {
                     </select>
                 </div>
             </header>
-            <ul id="Contact-List-Items">
-                <li className="Contact-List-Admin" onClick={() => props.changeContent('import')}>Import Contact <i className="fas fa-file-import"></i></li>
-                <li className="Contact-List-Admin" onClick={() => props.changeContent('new')}>New Contact <i className="fas fa-user-plus"></i></li>
-                {renderContactList()}
-            </ul>
+            <List changeContent={props.changeContent} />
             <footer>
                 <img src="https://picsum.photos/300/250/" id="advert" />
                 <i className="fas fa-ad"></i>

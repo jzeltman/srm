@@ -12,9 +12,10 @@
         &:after {
             content: "";
             display: block;
-            width: 100%;
+            width: calc(100% - 30px);
             height: 50px;
             position: absolute;
+            left: 0;
             bottom: 275px;
             background: linear-gradient(to bottom,  rgba(255,255,255,0) 50%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         }
@@ -26,42 +27,10 @@
         justify-content: space-between;
         padding: 13px;
     }
-    
-    &-Items {
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        flex: 1;
-        overflow: auto;
-        padding-bottom: 50px;
-        
-        li {
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-            cursor: pointer;
-            border-left: 7px solid var(--color-grey);
-            
-            &:hover {
-                background-color: #f9f9f9;
-            }
 
-            &.Contact-List-Item {
-                display: flex;
-                justify-content: space-between;
-            }
-
-            // &.frequency- { border-left-color: #ccc; }
-            // &.frequency-daily { border-left-color: var(--color-1); }
-            // &.frequency-weekly { border-left-color:  var(--color-2); }
-            // &.frequency-monthly { border-left-color:  var(--color-3); }
-            // &.frequency-quarterly { border-left-color:  var(--color-4); }
-            // &.frequency-semi-annually { border-left-color:  var(--color-5); }
-            // &.frequency-annually { border-left-color:  var(--color-6); }
-
-            i {
-                color: var(--color-grey);
-            }
-        }
+    section {
+        display: flex;
+        height: calc(100% - 330px);
     }
     
     &-Title {

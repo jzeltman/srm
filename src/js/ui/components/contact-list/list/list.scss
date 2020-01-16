@@ -1,0 +1,45 @@
+#Contact-List-Items {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    flex: 1;
+    overflow: auto;
+    padding-bottom: 50px;
+    
+    li:not(.Contact-Group-Parent) {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+        cursor: pointer;
+        
+        &:hover {
+            background-color: #f9f9f9;
+        }
+
+        &.Contact-List-Item {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        // &.frequency- { border-left-color: #ccc; }
+        // &.frequency-daily { border-left-color: var(--color-1); }
+        // &.frequency-weekly { border-left-color:  var(--color-2); }
+        // &.frequency-monthly { border-left-color:  var(--color-3); }
+        // &.frequency-quarterly { border-left-color:  var(--color-4); }
+        // &.frequency-semi-annually { border-left-color:  var(--color-5); }
+        // &.frequency-annually { border-left-color:  var(--color-6); }
+
+        i {
+            color: var(--color-grey);
+        }
+    }
+
+    .Contact-Group-Header {
+        background-color: #eee;
+        font-weight: bold;
+        padding: 5px 13px;
+        font-size: .7rem;
+        position: sticky;
+        top: 0;
+        text-transform: capitalize;
+    }
+}
