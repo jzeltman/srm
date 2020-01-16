@@ -1,34 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-import List from './list/list';
-
 import { sortContacts } from 'Actions/contacts';
-import timeToContact from 'Utils/timeToContact';
+import List from './list/list';
 import './contact-list.scss';
 
 const ContactList = (props) => {
-    const renderContactList = () => {
-        if (props.contacts === null || props.contacts.length === 0) {
-            return <li>Look's like you don't have any contacts. Let's make one</li>;
-        } else {
-            return props.contacts.map((contact,key) => {
-                const status = timeToContact(contact.last_update,contact.frequency);
-                const statusClassName = status ? "fa-user-clock" : "fa-thumbs-up";
-                return (
-                    <li 
-                        key={key} 
-                        onClick={() => props.changeContent(contact)} 
-                        className={`Contact-List-Item frequency-${contact.frequency}`}
-                    >
-                        <span>{contact.FN}</span> 
-                        <span><i className={`fas ${statusClassName}`}></i></span> 
-                    </li>
-                );
-            });
-        }
-    }
-
     return (
         <div id="Contact-List">
             <header>
