@@ -1,4 +1,4 @@
-name: Greeting from Mona
+name: test
 on: 
   push:
       branches:
@@ -9,6 +9,6 @@ jobs:
     name: My Job
     runs-on: ubuntu-latest
     steps:
-    - name: Print a greeting
-      run: |
-        echo testing
+      - shell: bash
+        run: |
+          echo Hello World! > hello-world.txt
