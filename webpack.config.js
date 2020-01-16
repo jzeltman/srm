@@ -15,6 +15,11 @@ module.exports = {
         path: path.resolve('public'),
         filename: '[name].js'    
     },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        },
+    },
     module: {
         rules: [
             {
