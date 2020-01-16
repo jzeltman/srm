@@ -1,5 +1,5 @@
-import { GET_CONTACTS, SORT_CONTACTS, SAVE_CONTACT, SIGN_OUT_USER } from '../../constants';
-import sortContacts from '../../utils/sort_contacts';
+import { GET_CONTACTS, SORT_CONTACTS, SAVE_CONTACT, SIGN_OUT_USER } from 'Constants';
+import sortContacts from 'Utils/sort_contacts';
 
 const contacts = (state = [], action) => {
     switch (action.type) {

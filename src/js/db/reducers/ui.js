@@ -1,4 +1,4 @@
-import { SORT_CONTACTS, UI_LOADING, RECEIVE_PHOTO } from '../../constants';
+import { SORT_CONTACTS, UI_LOADING, RECEIVE_PHOTO } from 'Constants';
 
 let initialState = {
     sort: 'alpha', 

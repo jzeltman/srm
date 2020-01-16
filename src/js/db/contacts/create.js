@@ -1,4 +1,4 @@
-import { db } from '../db';
+import { db } from 'DB';
 
 export const create = (contact) => {
     db.collection("contacts")

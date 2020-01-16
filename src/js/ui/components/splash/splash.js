@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { signIn } from '../../../db/actions/user';
+import { signIn } from 'Actions/user';
 
 import './splash.scss';
 

@@ -1,4 +1,4 @@
-import { GET_CONTACTS, SORT_CONTACTS, SAVE_CONTACT } from '../../constants';
+import { GET_CONTACTS, SORT_CONTACTS, SAVE_CONTACT } from 'Constants';
 
 export const getContacts = contacts => {
     return { type: GET_CONTACTS, contacts }

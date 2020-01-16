@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
 
-import Header from './components/header/header';
-import Splash from './components/splash/splash';
-import Dashboard from './components/dashboard/dashboard';
-import Footer from './components/footer/footer';
+import Header from 'Components/header/header';
+import Splash from 'Components/splash/splash';
+import Dashboard from 'Components/dashboard/dashboard';
+import Footer from 'Components/footer/footer';
 
 import './ui.scss';
 import '../../css/privacy.scss';

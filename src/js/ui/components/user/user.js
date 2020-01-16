@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
-import firebase from 'firebase';
 
-import { signOut, signIn } from '../../../db/actions/user';
+import { signOut, signIn } from 'Actions/user';
 
 import './user.scss';
 

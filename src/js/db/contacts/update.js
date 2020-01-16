@@ -1,5 +1,5 @@
-import { db } from '../db';
-import { yesterday } from '../../app/utils/timeToContact';
+import { yesterday } from 'Utils/timeToContact';
+import { db } from 'DB';
 
 export const update = (doc) => {
     if (typeof doc.updates === 'string') {

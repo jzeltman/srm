@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import firebase from 'firebase';
 
-import store from './db/store';
-import UI from './ui/_ui';
+import store from 'Store';
+import UI from 'UI/_ui';
 
 // import * as serviceWorker from './serviceWorker';
 

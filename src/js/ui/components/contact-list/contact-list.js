@@ -1,32 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 
-import { sortContacts } from '../../../db/actions/contacts';
-import timeToContact from '../../../app/utils/timeToContact';
+import { sortContacts } from 'Actions/contacts';
+import List from './list/list';
 import './contact-list.scss';
 
 const ContactList = (props) => {
-    const renderContactList = () => {
-        if (props.contacts === null || props.contacts.length === 0) {
-            return <li>Look's like you don't have any contacts. Let's make one</li>;
-        } else {
-            return props.contacts.map((contact,key) => {
-                const status = timeToContact(contact.last_update,contact.frequency);
-                const statusClassName = status ? "fa-user-clock" : "fa-thumbs-up";
-                return (
-                    <li 
-                        key={key} 
-                        onClick={() => props.changeContent(contact)} 
-                        className={`Contact-List-Item frequency-${contact.frequency}`}
-                    >
-                        <span>{contact.FN}</span> 
-                        <span><i className={`fas ${statusClassName}`}></i></span> 
-                    </li>
-                );
-            });
-        }
-    }
-
     return (
         <div id="Contact-List">
             <header>
@@ -43,11 +22,7 @@ const ContactList = (props) => {
                     </select>
                 </div>
             </header>
-            <ul id="Contact-List-Items">
-                <li className="Contact-List-Admin" onClick={() => props.changeContent('import')}>Import Contact <i className="fas fa-file-import"></i></li>
-                <li className="Contact-List-Admin" onClick={() => props.changeContent('new')}>New Contact <i className="fas fa-user-plus"></i></li>
-                {renderContactList()}
-            </ul>
+            <List changeContent={props.changeContent} />
             <footer>
                 <img src="https://picsum.photos/300/250/" id="advert" />
                 <i className="fas fa-ad"></i>

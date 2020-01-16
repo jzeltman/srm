@@ -1,5 +1,5 @@
 import { SET_CONTACT, SAVE_CONTACT, SAVE_PHOTO, NEW_UPDATE } from 'Constants';
-import ContactModel from '../../models/contact';
+import ContactModel from 'Models/contact';
 
 export const setContact = (contact) => {
     if (typeof contact === 'string') contact = { ...ContactModel, user: contact };

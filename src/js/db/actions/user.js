@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import { SET_USER, SIGN_OUT_USER } from '../../constants';
+import { SET_USER, SIGN_OUT_USER } from 'Constants';
 
 export const setUser = (user,token) => {
     return { type: SET_USER, user, token }

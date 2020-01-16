@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import FileUpload from '../file-upload/file-upload';
-import { saveContact, savePhoto } from '../../../db/actions/contact';
-import { loading } from '../../../db/actions/ui';
-import { contacts } from '../../../db/db';
+import { saveContact, savePhoto } from 'Actions/contact';
+import { loading } from 'Actions/ui';
+import { contacts } from 'DB';
 
 import Updates from './updates/updates';
 

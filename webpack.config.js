@@ -59,8 +59,14 @@ module.exports = {
     resolve: {
         alias: {
             Constants: path.resolve(__dirname, './src/js/constants.js'),
+            DB: path.resolve(__dirname, './src/js/db/db.js'),
+            Store: path.resolve(__dirname, './src/js/db/store.js'),
             Actions: path.resolve(__dirname, './src/js/db/actions'),
             Reducers: path.resolve(__dirname, './src/js/db/reducers'),
+            Models: path.resolve(__dirname, './src/js/models'),
+            UI: path.resolve(__dirname, './src/js/ui'),
+            Components: path.resolve(__dirname, './src/js/ui/components'),
+            Utils: path.resolve(__dirname, './src/js/utils'),
         }
     }
-};
+}

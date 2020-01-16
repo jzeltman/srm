@@ -1,8 +1,8 @@
 import firebase from 'firebase';
 import config from '../../../firebase.config';
 
-import store from './store';
-import { setUser } from './actions/user';
+import store from 'Store';
+import { setUser } from 'Actions/user';
 
 
 // import { create as userCreate } from './users/create';
@@ -16,7 +16,7 @@ import { read as contactRead } from './contacts/read';
 import { update as contactUpdate } from './contacts/update';
 import { destroy as contactDestroy } from './contacts/delete';
 
-import { getContacts } from './actions/contacts';
+import { getContacts } from 'Actions/contacts';
 
 let userDataFetched = false;
 
