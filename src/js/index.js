@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 
 import store from 'Store';
 import UI from 'UI/_ui';
+console.log('testing github action deployment');
 
 // import * as serviceWorker from './serviceWorker';
 
