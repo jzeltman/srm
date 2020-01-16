@@ -1,9 +1,12 @@
-import { SORT_CONTACTS, UI_LOADING, RECEIVE_PHOTO } from 'Constants';
+import { SORT_CONTACTS, UI_LOADING, RECEIVE_PHOTO, UI_SET_LETTER } from 'Constants';
 
 let initialState = {
     sort: 'alpha', 
     theme: 'light',
-    loading: false
+    loading: false,
+    letter: 'A',
+    groups: ['friends','family','work','acquaintances'],
+    sort_options: ['alpha','group','date']
 };
 
 const ui = (state = initialState, action) => {
@@ -24,6 +27,12 @@ const ui = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false
+            }
+            break;
+        } case UI_SET_LETTER: {
+            return {
+                ...state,
+                letter: action.letter
             }
             break;
         } default: {
