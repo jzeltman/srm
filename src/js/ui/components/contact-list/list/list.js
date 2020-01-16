@@ -26,7 +26,7 @@ const List = props => {
         const statusClassName = status ? "fa-user-clock" : "fa-thumbs-up";
         return (
             <li 
-                key={contactKey} 
+                key={`contact-${contactKey}`} 
                 onClick={() => props.changeContent(contact)} 
                 className={`Contact-List-Item frequency-${contact.frequency}`}
             >
@@ -44,27 +44,32 @@ const List = props => {
         }
     }
 
-    const groupedList = group.map((item,itemKey) => {
-        const groupContacts = filterContacts(item);
-        if (groupContacts.length === 0) return <></>
+    const groupedList = () => {
+        if (props.contacts.length === 0) return <></>;
         else {
-            return (
-                <li key={itemKey} className="Contact-Group-Parent">
-                    <header className="Contact-Group-Header sticky">{item}</header>
-                    <ul className="Contact-Group">
-                        {groupContacts.map((contact,contactKey) => renderContact(contact,contactKey))}
-                    </ul>
-                </li>
-            )
+            return group.map((item,itemKey) => {
+                const groupContacts = filterContacts(item);
+                if (groupContacts.length === 0) return <></>
+                else {
+                    return (
+                        <li key={`contact-list-${itemKey}`} className="Contact-Group-Parent">
+                            <header className="Contact-Group-Header sticky">{item}</header>
+                            <ul className="Contact-Group">
+                                {groupContacts.map((contact,contactKey) => renderContact(contact,contactKey))}
+                            </ul>
+                        </li>
+                    )
+                }
+            })
         }
-    })
+    }
 
     return (
         <section>
             <ul id="Contact-List-Items">
-                <li className="Contact-List-Admin" onClick={() => props.changeContent('import')}>Import Contact <i className="fas fa-file-import"></i></li>
-                <li className="Contact-List-Admin" onClick={() => props.changeContent('new')}>New Contact <i className="fas fa-user-plus"></i></li>
-                {groupedList}
+                <li key="import" className="Contact-List-Admin" onClick={() => props.changeContent('import')}>Import Contact <i className="fas fa-file-import"></i></li>
+                <li key="new" className="Contact-List-Admin" onClick={() => props.changeContent('new')}>New Contact <i className="fas fa-user-plus"></i></li>
+                {groupedList()}
             </ul>
         </section>
         
