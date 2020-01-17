@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 
 import store from 'Store';
 import UI from 'UI/_ui';
+import { resize } from 'Actions/ui';
+import debounce from 'Utils/debounce';
 
 // import * as serviceWorker from './serviceWorker';
 
@@ -23,3 +25,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         );
     }
 });
+
+window.addEventListener('resize',(e) => {
+    debounce(store.dispatch(resize({ 
+        height: window.outerHeight,
+        width: window.outerWidth
+    })),50)
+})

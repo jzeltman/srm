@@ -1,10 +1,24 @@
-import { SORT_CONTACTS, UI_LOADING, RECEIVE_PHOTO } from 'Constants';
+import { SORT_CONTACTS, UI_LOADING, RECEIVE_PHOTO, UI_RESIZE } from 'Constants';
+
+const getDeviceClass = () => {
+    let width = window.innerWidth;
+    if (width < 700) return 'mobile';
+    if (width < 1000) return 'tablet';
+    if (width > 1000) return 'desktop';
+}
 
 let initialState = {
     sort: 'alpha', 
     theme: 'light',
-    loading: false
+    loading: false,
+    dimensions: {
+        height: window.innerHeight,
+        width: window.innerWidth
+    },
+    orientation: window.innerHeight > window.innerWidth ? 'portrait' : 'landscape',
+    deviceClass: getDeviceClass()
 };
+
 
 const ui = (state = initialState, action) => {
     switch (action.type) {
@@ -24,6 +38,17 @@ const ui = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false
+            }
+            break;
+        } case UI_RESIZE: {
+            return {
+                ...state,
+                dimensions: {
+                    height: window.innerHeight,
+                    width: window.innerWidth
+                },
+                orientation: window.innerHeight > window.innerWidth ? 'portrait' : 'landscape',
+                deviceClass: getDeviceClass()
             }
             break;
         } default: {

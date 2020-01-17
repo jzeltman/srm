@@ -20,6 +20,7 @@ export const DB_SAVE_PHOTO = 'DB_SAVE_PHOTO';
 
 export const UI_LOADING = 'UI_LOADING';
 export const UI_SET_LETTER = 'UI_SET_LETTER';
+export const UI_RESIZE = 'UI_RESIZE';
 
 export const LETTERS = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 

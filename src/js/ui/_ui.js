@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 import Header from 'Components/header/header';
 import Splash from 'Components/splash/splash';
 import Dashboard from 'Components/dashboard/dashboard';
+import Today from 'Components/today/today';
 import Footer from 'Components/footer/footer';
+import Nav from 'Components/nav/nav';
 
 import './ui.scss';
 import '../../css/privacy.scss';
@@ -19,14 +21,17 @@ const UI = ({passedUID}) => {
         
     return (
         <>
-            <Header />
-            <main>
-                {!uid ? <Splash /> : <Dashboard />}
-            </main>
-            <Footer />
+            <Nav />
         </>
     )
 }
+            // <section>
+            //     <Header />
+            //     <main>
+            //         {!uid ? <Splash /> : <Today />}
+            //     </main>
+            //     <Footer />
+            // </section>
 
 const mapStateToProps = state => {
     return {
