@@ -16,7 +16,8 @@ let initialState = {
         width: window.innerWidth
     },
     orientation: window.innerHeight > window.innerWidth ? 'portrait' : 'landscape',
-    deviceClass: getDeviceClass()
+    deviceClass: getDeviceClass(),
+    menu: 'today'
 };
 
 

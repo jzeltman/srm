@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Menu from '../menu/menu';
 import Logo from '../logo/logo';
@@ -7,17 +8,43 @@ import Loading from '../loading/loading';
 
 import './header.scss';
 
-const Header = ({user}) => {
+const Header = (props) => {
+    const renderMenu = () => {
+        if (
+            props.ui.orientation === 'portrait'
+        ) {
+            return (
+                <button>
+                    <i className="fas fa-bars"></i>
+                </button>
+            )
+        } else return <></>;
+    }
+
+    const renderUser = () => {
+        if (
+            props.ui.orientation === 'portrait'
+        ) {
+            return (
+                <button>
+                    <i className="far fa-user-circle"></i>
+                </button>
+            )
+        } else return <></>;
+    }
+
     return (
         <header id="Header">
-            <div id="Header-Menu-Loading">
-                <Menu user={user} />
-                <Loading />
-            </div>
+            {renderMenu()}
             <Logo />
-            <User user={user} />
+            {renderUser()}
         </header>
     );
 }
 
-export default Header;
+const propMap = state => {
+    return {
+        ui: state.ui
+    };
+}
+export default connect(propMap,null)(Header);

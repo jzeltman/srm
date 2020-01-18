@@ -3,7 +3,9 @@ import './logo.scss';
 
 const Logo = () => {
     return (
-        <div id="Logo">Logo</div>
+        <div id="Logo">
+            <i className="fab fa-connectdevelop"></i>
+        </div>
     )
 }
 

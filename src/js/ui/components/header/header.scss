@@ -1,14 +1,18 @@
 #Header {
     width: 100vw;
     min-height: 60px;
-    background-color: #fff;
     display: flex;
-    border-bottom: 1px solid #ccc;
-    box-shadow: 0 0 5px 5px rgba(0,0,0,.05);
+    // box-shadow: 0 0 5px 5px var(--shadow-strong);
     justify-content: space-between;
 
     &-Menu-Loading {
         display: flex;
         min-width: 250px;
+    }
+
+    button {
+        font-size: 1.75rem;
+        padding: 0 15px;
+        color: var(--color-space-cadet-lighter);
     }
 }

@@ -7,6 +7,8 @@ import './nav.scss';
 
 const Nav = props => {
 
+    const [selected,setSelected] = useState(props.ui.menu);
+
     const renderLogo = () => {
         if (
             props.ui.orientation === 'landscape' &&
@@ -16,24 +18,49 @@ const Nav = props => {
         } else return <></>
     }
 
+    const renderUserOrSettings = () => {
+        if (props.ui.orientation === 'landscape') {
+            return <i className="fas fa-user-circle"></i>;
+        } else return <i className="fas fa-cogs"></i>;
+    }
+
+    const clickHandler = e => {
+
+    }
+
     return (
         <nav id="Nav">
             {renderLogo()}
             <ul>
-                <li>
+                <li 
+                    onClick={() => setSelected('contacts')}
+                    className={selected === 'contacts' ? 'selected' : ''}
+                >
                     <i className="fas fa-address-book"></i>
                 </li>
-                <li>
+                <li 
+                    onClick={() => setSelected('today')}
+                    className={selected === 'today' ? 'selected' : ''}
+                >
                     <i className="fas fa-calendar-day"></i>
                 </li>
-                <li>
+                <li 
+                    onClick={() => setSelected('reminders')}
+                    className={selected === 'reminders' ? 'selected' : ''}
+                >
                     <i className="fas fa-bell"></i>
                 </li>
-                <li>
+                <li 
+                    onClick={() => setSelected('birthdays')}
+                    className={selected === 'birthdays' ? 'selected' : ''}
+                >
                     <i className="fas fa-birthday-cake"></i>
                 </li>
-                <li>
-                    <i className="fas fa-user-circle"></i>
+                <li 
+                    onClick={() => setSelected('user')}
+                    className={selected === 'user' ? 'selected' : ''}
+                >
+                    {renderUserOrSettings()}
                 </li>
             </ul>
         </nav>

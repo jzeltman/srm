@@ -1,6 +1,9 @@
-nav#Nav {
-    background: #fff;
+#Nav {
     display: flex;
+
+    @media (min-width:700px) and (min-height:700px) {
+        min-width: 80px;
+    }
 
     ul {
         display: flex;
@@ -8,15 +11,22 @@ nav#Nav {
     }
 
     li {
-        color: var(--color-grey);
+        color: var(--color-space-cadet-lighter);        
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
 
-        &.selected,
-        &:hover {
-            background-color: var(--color-grey-hover);
+        &.selected {
+            color: var(--color-space-cadet);
+        }
+
+        &:hover:not(.selected) {
+            color: var(--color-space-cadet-light);  
+        }
+
+        @media (min-width:700px) and (min-height:700px) {
+            font-size: 2rem;
         }
     }
 
@@ -25,11 +35,21 @@ nav#Nav {
         height: 60px;
         position: fixed;
         bottom: 0;
-        border-top: 1px solid #ccc;
+        border-top: 3px solid var(--color-space-cadet-lightest);
 
         ul {
             width: 100%;
             flex-direction: row;
+        }
+
+        li {
+            flex: 1;
+            margin-top: -3px;
+            border-top: 3px solid var(--color-space-cadet-lightest);
+
+            &.selected {
+                border-top-color: var(--color-space-cadet); 
+            }
         }
 
         @media (max-width:700px) {
@@ -37,28 +57,51 @@ nav#Nav {
                 font-size: 1.4rem;
             }
         }
+
+        @media (min-width:700px) and (min-height:700px) {
+            height: 80px;
+        }
     }
 
     @media (orientation : landscape) {
         height: 100vh;
-        border-right: 1px solid #ccc;
+        border-right: 3px solid var(--color-space-cadet-lightest);
         flex-direction: column;
         justify-content: space-between;
-        box-shadow: 0 0 5px 5px rgba(0,0,0,.05);
-        min-width: 60px;
+        // box-shadow: 0 0 5px 5px var(--shadow-strong);
+
+        @media (max-width:700px) {
+            min-width: 60px;
+        }
 
         ul {
             flex-direction: column;
+
             @media (max-height:700px) {
-                
+                height: 100%;
             }
-            height: 100%;
         }
 
         li {
-            border-top: 1px solid #ccc;
-            font-size: 1.7rem;
             height: 100%;
+            margin-right: -3px;
+            border-right: 3px solid var(--color-space-cadet-lightest);
+
+            &.selected {
+                border-right-color: var(--color-space-cadet); 
+            }
+            
+            @media (max-width:700px) {
+                font-size: 1.7rem;
+            }
+
+            @media (min-height:700px) {
+                padding: 15px 0;
+
+                @media (min-width:700px) {
+                    padding: 25px 0;
+                }
+            }
         }
     }
 }

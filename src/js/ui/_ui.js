@@ -21,6 +21,9 @@ const UI = ({passedUID}) => {
         
     return (
         <>
+            <main>
+                <Header />
+            </main>
             <Nav />
         </>
     )
