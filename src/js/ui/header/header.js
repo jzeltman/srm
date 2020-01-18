@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Switch, Route, Link, withRouter } from 'react-router-dom';
 
-import Menu from '../menu/menu';
 import Logo from '../logo/logo';
-import User from '../user/user';
-import Loading from '../loading/loading';
+import HeaderToday from './today/header-today';
+import HeaderContacts from './contacts/header-contacts';
 
 import './header.scss';
 
@@ -35,9 +35,15 @@ const Header = (props) => {
 
     return (
         <header id="Header">
-            {renderMenu()}
-            <Logo />
-            {renderUser()}
+            <Switch>
+                <Route path="/contacts" component={HeaderContacts} />
+                <Route path="/" component={HeaderToday} />
+                <Route>
+                    {renderMenu()}
+                    <Logo />
+                    {renderUser()}
+                </Route>
+            </Switch>
         </header>
     );
 }
@@ -47,4 +53,4 @@ const propMap = state => {
         ui: state.ui
     };
 }
-export default connect(propMap,null)(Header);
+export default withRouter(connect(propMap,null)(Header));

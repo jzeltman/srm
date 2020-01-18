@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import store from 'Store';
-import UI from 'UI/_ui';
+import Main from 'Components/main/main';
+import Nav from 'Components/nav/nav';
+import Header from 'Components/header/header';
+
 import { resize } from 'Actions/ui';
 import debounce from 'Utils/debounce';
+
 
 // import * as serviceWorker from './serviceWorker';
 
@@ -19,7 +24,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
     if (AppEl) {
         ReactDOM.render(
             <Provider store={store}>
-                <UI />
+                <Router>
+                    <Header />
+                    <Main />
+                    <Nav />
+                </Router>
             </Provider>, 
             AppEl
         );

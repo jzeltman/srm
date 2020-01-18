@@ -1,5 +1,8 @@
 #Nav {
     display: flex;
+    background-color: #fff;
+    position: sticky;
+    bottom: 0;
 
     @media (min-width:700px) and (min-height:700px) {
         min-width: 80px;
@@ -11,14 +14,29 @@
     }
 
     li {
-        color: var(--color-space-cadet-lighter);        
         cursor: pointer;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        // justify-content: center;
+        // align-items: center;
 
-        &.selected {
+        a {
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        &.selected a {
             color: var(--color-space-cadet);
+        }
+
+        &:not(.selected) {
+            a:hover {
+                color: var(--color-space-cadet-light);
+            }
+        }
+
+        a {
+            color: var(--color-space-cadet-lighter);
         }
 
         &:hover:not(.selected) {
@@ -47,13 +65,17 @@
             margin-top: -3px;
             border-top: 3px solid var(--color-space-cadet-lightest);
 
+            &:not(.selected):hover {
+                border-top-color: var(--color-space-cadet-lighter);
+            }
+
             &.selected {
                 border-top-color: var(--color-space-cadet); 
             }
         }
 
         @media (max-width:700px) {
-            li {
+            li a {
                 font-size: 1.4rem;
             }
         }
@@ -87,19 +109,25 @@
             margin-right: -3px;
             border-right: 3px solid var(--color-space-cadet-lightest);
 
+            &:not(.selected):hover {
+                border-right-color: var(--color-space-cadet-lighter);
+            }
+
             &.selected {
                 border-right-color: var(--color-space-cadet); 
             }
             
-            @media (max-width:700px) {
-                font-size: 1.7rem;
-            }
+            a {
+                @media (max-width:700px) {
+                    font-size: 1.7rem;
+                }
 
-            @media (min-height:700px) {
-                padding: 15px 0;
+                @media (min-height:700px) {
+                    padding: 15px 0;
 
-                @media (min-width:700px) {
-                    padding: 25px 0;
+                    @media (min-width:700px) {
+                        padding: 25px 0;
+                    }
                 }
             }
         }

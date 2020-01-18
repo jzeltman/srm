@@ -50,23 +50,6 @@ const Today = (props) => {
     
     return (
         <div id="Today">
-            <header id="Today-Header">
-                <h2 className={tab === 'today' ? 'selected' : ''} 
-                    onClick={() => toggleTab('today')}>
-                    <span>Today's Contacts</span>
-                    <i className="fas fa-calendar-day"></i>
-                </h2>
-                <h2 className={tab === 'actions' ? 'selected' : ''} 
-                    onClick={() => toggleTab('actions')}>
-                    <span>Actions</span>
-                    <i className="fas fa-bell"></i>
-                </h2>
-                <h2 className={tab === 'birthdays' ? 'selected' : ''} 
-                    onClick={() => toggleTab('birthdays')}>
-                    <span>Birthdays</span>
-                    <i className="fas fa-birthday-cake"></i>
-                </h2>
-            </header>
             {content}
         </div>
     )

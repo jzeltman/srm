@@ -9,4 +9,8 @@
     i {
         font-size: 2.25rem;
     }
+
+    @media (min-width:700px) and (min-height:700px) and (orientation: landscape) {
+        height: 80px;
+    }
 }

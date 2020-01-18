@@ -24,8 +24,6 @@
 * { box-sizing: border-box; }
 html, body { 
     margin: 0; 
-    // background-image: url('../../img/qbkls.webp');
-    // background-color: var(--color-space-cadet-lightest);
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
     min-width: 100vw;
@@ -43,12 +41,25 @@ ul {
     display: flex;
     
     @media (min-width:700px) and (min-height:700px) and (orientation: landscape) {
+        display: block;
+
+        #Header {
+            width: calc(100vw - 80px);
+        }
+
         main {
-            order: 2;
+            width: calc(100vw - 80px);
+            height: calc(100vh - 80px);
+            position: fixed;
+            left: 80px;
+            top: 80px;
+            overflow: auto;
         }
 
         #Nav {
-            order: 1;
+            position: fixed;
+            top: 0;
+            left: 0;
         }
     }
     

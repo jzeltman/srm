@@ -70,7 +70,7 @@ module.exports = {
             Reducers: path.resolve(__dirname, './src/js/db/reducers'),
             Models: path.resolve(__dirname, './src/js/models'),
             UI: path.resolve(__dirname, './src/js/ui'),
-            Components: path.resolve(__dirname, './src/js/ui/components'),
+            Components: path.resolve(__dirname, './src/js/ui'),
             Utils: path.resolve(__dirname, './src/js/utils'),
         }
     }

@@ -2,8 +2,11 @@
     width: 100vw;
     min-height: 60px;
     display: flex;
-    // box-shadow: 0 0 5px 5px var(--shadow-strong);
     justify-content: space-between;
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 
     &-Menu-Loading {
         display: flex;
@@ -14,5 +17,10 @@
         font-size: 1.75rem;
         padding: 0 15px;
         color: var(--color-space-cadet-lighter);
+    }
+
+    @media (min-width:700px) and (min-height:700px) and (orientation: landscape) {
+        left: 80px;
+        min-height: 80px;
     }
 }
