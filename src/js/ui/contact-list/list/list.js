@@ -30,8 +30,25 @@ const List = props => {
                 onClick={() => props.changeContent(contact)} 
                 className={`Contact-List-Item frequency-${contact.frequency}`}
             >
-                <span>{contact.FN}</span> 
-                <span><i className={`fas ${statusClassName}`}></i></span> 
+                <div>
+                    <span className="Contact-Status">
+                        <i className={`fas ${statusClassName}`}></i>
+                    </span>
+                    <span>
+                        {contact.PHOTO ? 
+                            <div style={{ backgroundImage: `url(${contact.PHOTO})` }} className="Contact-Photo" /> : 
+                            <i className="fas fa-user-circle Contact-Photo"></i>
+                        }
+                        {contact.FN}
+                    </span>
+                </div>
+                {props.ui.deviceClass === 'mobile' ? <></> :
+                    props.ui.sort !== 'alpha' ? <></> :
+                        <div>
+                            <span className="Contact-Tag --Frequency">{contact.frequency}</span>
+                            <span className="Contact-Tag --Group">{contact.group}</span>
+                        </div>
+                }
             </li>
         );
     }
@@ -67,8 +84,6 @@ const List = props => {
     return (
         <section>
             <ul id="Contact-List-Items">
-                <li key="import" className="Contact-List-Admin" onClick={() => props.changeContent('import')}>Import Contact <i className="fas fa-file-import"></i></li>
-                <li key="new" className="Contact-List-Admin" onClick={() => props.changeContent('new')}>New Contact <i className="fas fa-user-plus"></i></li>
                 {groupedList()}
             </ul>
         </section>

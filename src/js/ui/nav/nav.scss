@@ -16,13 +16,27 @@
     li {
         cursor: pointer;
         display: flex;
-        // justify-content: center;
-        // align-items: center;
 
         a {
             width: 100%;
             text-align: center;
             text-decoration: none;
+            position: relative;
+
+            .notifications {
+                position: absolute;
+                background: var(--color-dusty-red);
+                color: #fff;
+                font-weight: 900;
+                font-size: 9px;
+                border-radius: 50px;
+                padding: 5px;
+                border: 2px solid #fff;
+                top: 15%;
+                right: 15%;
+                line-height: 1;
+                text-align: center;
+            }
         }
 
         &.selected a {
@@ -64,6 +78,7 @@
             flex: 1;
             margin-top: -3px;
             border-top: 3px solid var(--color-space-cadet-lightest);
+            align-items: center;
 
             &:not(.selected):hover {
                 border-top-color: var(--color-space-cadet-lighter);

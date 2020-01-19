@@ -7,9 +7,12 @@
     padding-bottom: 50px;
     
     li:not(.Contact-Group-Parent) {
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
+        padding: 15px 0;
         cursor: pointer;
+        
+        & + li {
+            border-top: 1px solid var(--color-space-cadet-lightest);
+        }
         
         &:hover {
             background-color: #f9f9f9;
@@ -18,28 +21,59 @@
         &.Contact-List-Item {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+
+            div {
+                display: flex;
+            }
+
+            span {
+                padding: 0 15px;
+                display: flex;
+                align-items: center;
+
+                & + span {
+                    border-left: 1px solid var(--color-space-cadet-lightest);
+                }
+
+                &.Contact-Status {
+                    width: 50px;
+                    padding: 0;
+                    justify-content: center;
+                }
+
+                div.Contact-Photo {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 100px;
+                    background-size: contain;
+                    background-position: center center;
+                    margin-right: 15px;
+                }
+            }
         }
 
-        // &.frequency- { border-left-color: #ccc; }
-        // &.frequency-daily { border-left-color: var(--color-1); }
-        // &.frequency-weekly { border-left-color:  var(--color-2); }
-        // &.frequency-monthly { border-left-color:  var(--color-3); }
-        // &.frequency-quarterly { border-left-color:  var(--color-4); }
-        // &.frequency-semi-annually { border-left-color:  var(--color-5); }
-        // &.frequency-annually { border-left-color:  var(--color-6); }
-
         i {
-            color: var(--color-grey);
+            color: var(--color-space-cadet-lighter);
+
+            &.fa-thumbs-up { color: var(--color-june-bug); }
+            &.fa-user-clock { color: var(--color-dusty-red); }
+            &.Contact-Photo { 
+                margin-right: 15px; 
+                font-size: 2rem;
+
+            }
         }
     }
 
     .Contact-Group-Header {
-        background-color: #eee;
+        background-color: var(--color-space-cadet-lightest);
         font-weight: bold;
         padding: 5px 13px;
         font-size: .7rem;
         position: sticky;
         top: 0;
         text-transform: capitalize;
+        border-radius: 3px;
     }
 }

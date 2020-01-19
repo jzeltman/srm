@@ -7,18 +7,6 @@ import Logo from 'Components/logo/logo';
 import './nav.scss';
 
 const Nav = props => {
-console.log('nav props:', props)
-
-    const [selected,setSelected] = useState(props.location.pathname);
-
-    const renderLogo = () => {
-        if (
-            props.ui.orientation === 'landscape' &&
-            props.ui.dimensions.height > 700
-        ) {
-            return <Logo />;
-        } else return <></>
-    }
 
     const renderUserOrSettings = () => {
         if (props.ui.orientation === 'landscape') {
@@ -36,18 +24,24 @@ console.log('nav props:', props)
         }
     }
 
+    const renderNotifications = count => {
+        if (count !== 0) return <span className="notifications">{count}</span>
+        else return <></>;
+    }
+
     return (
         <nav id="Nav">
-            {renderLogo()}
+            {props.ui.deviceClass === 'mobile' ? <></> : <Logo /> }
             <ul>
+                <li className={props.location.pathname === '/' ? 'selected' : ''}>
+                    <Link to="/">
+                        {renderNotifications(props.contacts.length)}
+                        <i className="fas fa-calendar-day"></i>
+                    </Link>
+                </li>
                 <li className={props.location.pathname === '/contacts' ? 'selected' : ''}>
                     <Link to="/contacts">
                         <i className="fas fa-address-book"></i>
-                    </Link>
-                </li>
-                <li className={props.location.pathname === '/' ? 'selected' : ''}>
-                    <Link to="/">
-                        <i className="fas fa-calendar-day"></i>
                     </Link>
                 </li>
                 <li className={props.location.pathname === '/actions' ? 'selected' : ''}>
@@ -70,7 +64,8 @@ console.log('nav props:', props)
 
 const propMap = state => {
     return {
-        ui: state.ui
+        ui: state.ui,
+        contacts: state.contacts
     }
 }
 

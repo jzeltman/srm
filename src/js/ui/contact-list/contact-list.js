@@ -8,10 +8,6 @@ const ContactList = (props) => {
     return (
         <div id="Contact-List">
             <List changeContent={props.changeContent} />
-            <footer>
-                <img src="https://picsum.photos/300/250/" id="advert" />
-                <i className="fas fa-ad"></i>
-            </footer>
         </div>
     )
 }

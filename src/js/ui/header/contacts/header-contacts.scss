@@ -1,0 +1,31 @@
+#Contact-Search {
+    flex: 1;
+    padding: 0 0 0 15px;
+    display: flex;
+    align-items: center;
+
+    .fa-search {
+        color: var(--color-space-cadet-lighter);
+        position: relative;
+        left: 5px;
+        z-index: 1;
+
+        &:hover {
+            color: var(--color-space-cadet-light);
+        }
+    }
+
+    input {
+        margin: 0 0 0 -20px;
+        border-radius: 5px;
+        border: 1px solid var(--color-space-cadet-lightest);
+        padding: 7px 7px 7px 30px;
+        font-size: 1rem;
+        width: calc(100% + 20px);
+        color: var(--color-space-cadet);
+
+        &::placeholder {
+            color: var(--color-space-cadet-lighter);
+        }
+    }
+}
