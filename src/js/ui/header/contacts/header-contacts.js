@@ -19,12 +19,12 @@ const HeaderContacts = props => {
                         <button title="Grid View">
                             <i className="fas fa-th-large"></i>
                         </button>
-                        <button title="Add New Contact">
+                        <Link to="/contacts/new" title="Add New Contact">
                             <i className="fas fa-user-plus"></i>
-                        </button>
-                        <button title="Import Contact">
+                        </Link>
+                        <Link to="/contacts/import" title="Import Contact">
                             <i className="fas fa-file-import"></i>
-                        </button>
+                        </Link>
                         <button title="Sort">
                             <i className="fas fa-sort-amount-up"></i>
                         </button>

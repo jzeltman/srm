@@ -1,23 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter, useParams } from 'react-router-dom';
-import { contacts } from 'DB';
+import { withRouter } from 'react-router-dom';
 
 import './contact-updates.scss';
 
 const ContactUpdates = props => {
-    let { uid } = useParams();
-    let contact = contacts.getContact(uid,props.contacts);
-    console.log('contact updates:', contact.updates)
-
     const onChangeHandler = e => console.log('ContactUpdates onChangeHandler',e);
 
     const renderUpdates = () => {
-        return contact.updates.map((update,key) => (
-            <div className="Contact-Update">
+        return props.contact.updates.map((update,key) => (
+            <div className="Contact-Update" key={key}>
                 <label htmlFor={`update-${key}`}>{update.date}</label>
                 <input 
-                    key={key}
                     type="textarea" 
                     defaultValue={update.update} 
                     name={`update-${key}`}
@@ -42,10 +36,4 @@ const ContactUpdates = props => {
     )
 }
 
-const propMap = state => {
-    return {
-        contacts: state.contacts
-    }
-}
-
-export default withRouter(connect(propMap,null)(ContactUpdates));
+export default withRouter(connect()(ContactUpdates));

@@ -8,6 +8,15 @@
     &.contact-page {
         flex-basis: 350px;
     }
+
+    button, a {
+        padding: 0 15px;
+        color: var(--color-space-cadet-lighter);
+
+        &:hover {
+            color: var(--color-space-cadet-light);
+        }
+    }
 }
 
 #Contact-Search {

@@ -9,18 +9,26 @@ import ContactCard from './card/contact-card';
 import FileUpload from '../file-upload/file-upload';
 import Loading from 'Components/loading/loading';
 import { saveContact, savePhoto } from 'Actions/contact';
+import ContactModel from 'Models/contact';
 import { contacts } from 'DB';
 
 const Contact = (props) => {
-    let { uid } = useParams();
-    let contact = contacts.getContact(uid,props.contacts);
-    if (!contact) {
+
+    if (props.contacts.length === 0) {
         return (
             <div id="Contact" className="loading-wrapper">
                 <Loading />
             </div>
         )
     } else {
+        let { uid } = useParams();
+        let contact = contacts.getContact(uid,props.contacts);
+        if (
+            props.location.pathname === '/contacts/new' || 
+            props.location.pathname === '/contacts/import'
+        ) contact = { ...ContactModel, user: props.userUID };
+        console.log('contact:', contact)
+
         // const [contact,setContact] = useState(contacts.getContact(uid,props.contacts));
         // const [advanced,setAdvanced] = useState(false);
         // const [upload,setUpload] = useState(false);
@@ -86,8 +94,8 @@ const Contact = (props) => {
 
         return (
             <div id="Contact">
-                <ContactCard />
-                <ContactUpdates />
+                <ContactCard contact={contact} />
+                <ContactUpdates contact={contact} />
                 <div className="Contact-Item">
                     <label htmlFor="action">Actions</label>
                     <input type="textarea" defaultValue={contact.action} name="action" onChange={onChangeHandler} />
@@ -99,7 +107,7 @@ const Contact = (props) => {
 
 const propMap = state => {
     return {
-        contact: state.contact,
+        userUID: state.user.uid,
         contacts: state.contacts
     }
 }
