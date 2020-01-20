@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link, withRouter, useParams } from 'react-router-dom';
+
 
 import FileUpload from '../file-upload/file-upload';
 import { saveContact, savePhoto } from 'Actions/contact';
@@ -9,16 +11,19 @@ import { contacts } from 'DB';
 import './contact.scss';
 
 const Contact = (props) => {
-    const [contact,setContact] = useState(props.contact);
+    let { uid } = useParams();
+    console.log('Contact uid:', uid)
+    const [contact,setContact] = useState(contacts.getContact(uid,props.contacts));
     const [advanced,setAdvanced] = useState(false);
     const [upload,setUpload] = useState(false);
     
     useEffect(() => {
+        console.log('props',props)
         if (
-            contact.uid !== props.contact.uid ||
+            contact.uid !== uid ||
             contact.PHOTO !== props.contact.PHOTO
         ) {
-            setContact(props.contact);
+            // setContact(props.contact);
             setAdvanced(false);
         }
     });
@@ -71,27 +76,10 @@ const Contact = (props) => {
     )
 
     if (upload) fileUploadMarkup = <FileUpload config={fileUploadConfig} />
+    console.log('contact:', contact)
 
     return (
         <div id="Contact">
-            <header>
-                <button onClick={onCancelHandler} id="Contact-Return">
-                    <i className="fas fa-arrow-left"></i>
-                </button>
-                <h2>{contact.FN}</h2>
-                <button 
-                    className="Advanced" 
-                    onClick={() => setAdvanced(!advanced)}
-                >
-                    <span>{advanced ? 'Hide Advanced ' : 'Show Advanced '}</span>
-                    <i className="fas fa-cog"></i>
-                </button>
-                <button id="Contact-Save" onClick={onSaveHandler}>
-                    <span>{!contact.uid ? 'Create ' : 'Save '}</span>
-                    <i className="fas fa-save"></i>
-                </button>
-                {fileUploadMarkup}
-            </header>
             <div id="Contact-Card">
                 <div id="Contact-Photo" className={contact.PHOTO === '' ? 'empty' : 'full'} style={headerBackgroundCSS}>
                     <button onClick={togglePhotoModal} id="Contact-Profile-Upload">
@@ -149,7 +137,8 @@ const Contact = (props) => {
 
 const mapStateToProps = state => {
     return {
-        contact: state.contact
+        contact: state.contact,
+        contacts: state.contacts
     }
 }
 

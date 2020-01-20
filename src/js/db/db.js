@@ -12,7 +12,7 @@ import { setUser } from 'Actions/user';
 import { create as photoCreate } from './photo/create';
 
 import { create as contactCreate } from './contacts/create';
-import { read as contactRead } from './contacts/read';
+import { read as contactRead, getContactByUID } from './contacts/read';
 import { update as contactUpdate } from './contacts/update';
 import { destroy as contactDestroy } from './contacts/delete';
 
@@ -39,7 +39,8 @@ export const contacts = {
     create: contactCreate,
     read: contactRead,
     update: contactUpdate,
-    destroy: contactDestroy
+    destroy: contactDestroy,
+    getContact: getContactByUID
 };
 
 export const photos = {

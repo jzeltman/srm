@@ -39,7 +39,7 @@ const Nav = props => {
                         <i className="fas fa-calendar-day"></i>
                     </Link>
                 </li>
-                <li className={props.location.pathname === '/contacts' ? 'selected' : ''}>
+                <li className={props.location.pathname.includes('/contacts') ? 'selected' : ''}>
                     <Link to="/contacts">
                         <i className="fas fa-address-book"></i>
                     </Link>

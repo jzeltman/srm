@@ -1,0 +1,16 @@
+#Contact-Header {
+    flex: 1;
+    background-color: var(--color-space-cadet-lightest);
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+
+    h2 {
+        flex: 1;
+    }
+
+    button {
+        color: var(--color-space-cadet-light);
+    }
+}

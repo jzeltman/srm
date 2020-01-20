@@ -1,6 +1,7 @@
 #Contact {
     height: 100%;
-    padding: 25px;
+    flex: 1;
+    background-color: var(--color-space-cadet-lightest);
 
     .Contact-Item {
         margin: 25px;
@@ -17,11 +18,11 @@
             width: 100%;
             padding: 10px;
             border-radius: 5px;
-            border: 1px solid #ccc;
+            border: 1px solid var(--color-space-cadet-lighter);
             font-size: 1rem;
 
             &:active {
-                border-color: #aaa;
+                border-color: var(--color-space-cadet-light);
             }
         }
         
@@ -42,7 +43,7 @@
         padding: 15px;
         font-size: 1rem;
         border-radius: 5px;
-        border: 1px solid #ccc;
+        border: 1px solid var(--color-space-cadet-lighter);
         cursor: pointer;
         
         &:hover, &:active {
@@ -87,10 +88,12 @@
 
     &-Card {
         display: flex;
-        border: 1px solid #ccc;
-        border-bottom-width: 2px;
+        border: 1px solid var(--color-space-cadet-lighter);
+        background-color: #fff;
+        border-bottom-width: 3px;
         border-radius: 10px;
         padding: 13px;
+        margin: 0 25px 25px;
 
         &-Items {
             flex-grow: 1;

@@ -1,4 +1,4 @@
-import { db } from 'DB';
+import { db, store } from 'DB';
 
 export const read = (uid,cb) => {
     return db.collection("contacts").where("user", "==", uid)
@@ -13,4 +13,11 @@ export const read = (uid,cb) => {
             return dataArray;
         })
         .catch((e) => console.error("Error getting documents: ", e));
+}
+
+export const getContactByUID = (uid,contacts) => {
+    if (!uid || !contacts) return false;
+    else {
+        return contacts.filter( contact => uid === contact.uid)[0]
+    }
 }

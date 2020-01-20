@@ -7,7 +7,6 @@
     padding-bottom: 50px;
     
     li:not(.Contact-Group-Parent) {
-        padding: 15px 0;
         cursor: pointer;
         
         & + li {
@@ -17,11 +16,17 @@
         &:hover {
             background-color: #f9f9f9;
         }
-
+        
         &.Contact-List-Item {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            
+            a {
+                padding: 15px 0;
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+            }
 
             div {
                 display: flex;

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
+
 import { LETTERS, GROUPS, FREQUENCY } from 'Constants';
 import timeToContact from 'Utils/timeToContact';
 
@@ -21,34 +23,45 @@ const List = props => {
         contactField = 'frequency';
     }
 
+    const renderFields = (contact) => {
+        console.log('props',props);
+        if (
+            props.ui.deviceClass !== 'mobile' &&
+            props.ui.sort === 'alpha' && 
+            props.location.pathname.indexOf('/contacts/') === -1
+        ) {
+            return (
+                <div>
+                    <span className="Contact-Tag --Frequency">{contact.frequency}</span>
+                    <span className="Contact-Tag --Group">{contact.group}</span>
+                </div>
+            )
+        }
+    }
+
     const renderContact = (contact,contactKey) => {
         const status = timeToContact(contact.last_update,contact.frequency);
         const statusClassName = status ? "fa-user-clock" : "fa-thumbs-up";
         return (
             <li 
                 key={`contact-${contactKey}`} 
-                onClick={() => props.changeContent(contact)} 
                 className={`Contact-List-Item frequency-${contact.frequency}`}
             >
-                <div>
-                    <span className="Contact-Status">
-                        <i className={`fas ${statusClassName}`}></i>
-                    </span>
-                    <span>
-                        {contact.PHOTO ? 
-                            <div style={{ backgroundImage: `url(${contact.PHOTO})` }} className="Contact-Photo" /> : 
-                            <i className="fas fa-user-circle Contact-Photo"></i>
-                        }
-                        {contact.FN}
-                    </span>
-                </div>
-                {props.ui.deviceClass === 'mobile' ? <></> :
-                    props.ui.sort !== 'alpha' ? <></> :
-                        <div>
-                            <span className="Contact-Tag --Frequency">{contact.frequency}</span>
-                            <span className="Contact-Tag --Group">{contact.group}</span>
-                        </div>
-                }
+                <Link to={`/contacts/${contact.uid}`}>
+                    <div>
+                        <span className="Contact-Status">
+                            <i className={`fas ${statusClassName}`}></i>
+                        </span>
+                        <span>
+                            {contact.PHOTO ? 
+                                <div style={{ backgroundImage: `url(${contact.PHOTO})` }} className="Contact-Photo" /> : 
+                                <i className="fas fa-user-circle Contact-Photo"></i>
+                            }
+                            {contact.FN}
+                        </span>
+                    </div>
+                    {renderFields(contact)}
+                </Link>
             </li>
         );
     }
@@ -104,4 +117,4 @@ const dispatcher = dispatch => {
     }
 }
 
-export default connect(propMap,dispatcher)(List)
+export default withRouter(connect(propMap,dispatcher)(List))

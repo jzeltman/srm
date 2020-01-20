@@ -1,6 +1,9 @@
 :root {
     // https://coolors.co/d7263d-f46036-2e294e-1282a2-c5d86d
     --color-dusty-red: #D7263D;
+    --color-portland-orange-lightest: #FEF0EC;
+    --color-portland-orange-lighter: #FBC5B5;
+    --color-portland-orange-light: #F78B6C;
     --color-portland-orange: #F46036;
     --color-space-cadet: #2E294E;
     --color-space-cadet-lightest: #ECEBEE;
@@ -36,6 +39,11 @@ ul {
     list-style: none;
 }
 
+a {
+    text-decoration: none;
+    color: var(--color-space-cadet-light);
+}
+
 #App {
     height: 100%;
     display: flex;
@@ -55,6 +63,11 @@ ul {
             left: 80px;
             top: 80px;
             overflow: auto;
+
+            &[data-route^='/contacts/'] {
+                display: flex;
+                flex-direction: row;
+            }
         }
 
         #Nav {
