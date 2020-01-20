@@ -9,11 +9,13 @@ module.exports = {
         compress: true,
         port: 3000,
         hot: true,
+        historyApiFallback: true
     },
     entry: './src/js/index.js',
     output: {
         path: path.resolve('public'),
-        filename: '[name].js'    
+        filename: '[name].js',
+        publicPath: "/"
     },
     optimization: {
         splitChunks: {

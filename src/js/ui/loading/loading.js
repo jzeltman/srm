@@ -4,14 +4,12 @@ import { connect } from 'react-redux';
 import './loading.scss';
 
 const Loading = props => {
-    if (props.loading !== false) {
-        return (
-            <div id="Loading">
-                <div id="Loading-Progress"></div>
-                <i className="fas fa-spinner Loading-Spinner"></i>
-            </div>
-        )
-    } else return <></>;
+    return (
+        <div id="Loading" className="loading-wrapper">
+            <div id="Loading-Progress"></div>
+            <i className="fas fa-spinner Loading-Spinner"></i>
+        </div>
+    )
 }
 
 const mapStateToProps = state => {

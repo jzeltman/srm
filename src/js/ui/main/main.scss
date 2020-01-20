@@ -95,7 +95,12 @@ input {
             left: 0;
         }
     }
-    
+}
+
+.loading-wrapper {
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 button {
