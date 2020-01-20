@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Link, withRouter } from 'react-router-dom';
 
+import './header.scss';
+
 import Logo from '../logo/logo';
 import HeaderToday from './today/header-today';
 import HeaderContacts from './contacts/header-contacts';
 import HeaderContact from './contact/header-contact';
 
-import './header.scss';
 
 const Header = (props) => {
     const renderMenu = () => {

@@ -24,7 +24,6 @@ const List = props => {
     }
 
     const renderFields = (contact) => {
-        console.log('props',props);
         if (
             props.ui.deviceClass !== 'mobile' &&
             props.ui.sort === 'alpha' && 

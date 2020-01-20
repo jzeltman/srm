@@ -42,6 +42,27 @@
         &.selected a {
             color: var(--color-portland-orange);
             background-color: #fff;
+            padding: 30px 0;
+
+            &:before,
+            &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                height: 10px;
+                background: var(--color-portland-orange);
+            }
+            
+            &:before {
+                top: 0;
+                border-radius: 0 0 10px 0;
+            }
+
+            &:after {
+                bottom: 0;
+                border-radius: 0 10px 0 0;
+            }
         }
 
         &:not(.selected) {
@@ -77,7 +98,6 @@
 
         li {
             flex: 1;
-            margin-top: -3px;
             // border-top: 3px solid var(--color-space-cadet-lightest);
             align-items: center;
 
@@ -122,7 +142,6 @@
 
         li {
             height: 100%;
-            margin-right: -3px;
             // border-right: 3px solid var(--color-space-cadet-lightest);
 
             &:not(.selected):hover {

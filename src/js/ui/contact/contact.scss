@@ -1,42 +1,9 @@
 #Contact {
     height: 100%;
     flex: 1;
-    background-color: var(--color-space-cadet-lightest);
+    background-color: var(--color-cg-blue-lighter);
 
-    .Contact-Item {
-        margin: 25px;
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: .9rem;
-            font-weight: bold;
-        }
-
-        select,
-        input {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid var(--color-space-cadet-lighter);
-            font-size: 1rem;
-
-            &:active {
-                border-color: var(--color-space-cadet-light);
-            }
-        }
-        
-        &.Advanced {
-            display: block;
-            text-align: center;
-        }
-
-        &-Group {
-            display: flex;
-
-            .Contact-Item { width: 100%; }
-        }
-    }
+    
     
     button {
         margin: 25px;
@@ -88,7 +55,7 @@
 
     &-Card {
         display: flex;
-        border: 1px solid var(--color-space-cadet-lighter);
+        border: 1px solid var(--color-space-cadet);
         background-color: #fff;
         border-bottom-width: 3px;
         border-radius: 10px;
@@ -135,5 +102,40 @@
                 opacity: 1;
             }
         }
+    }
+}
+
+.Contact-Item {
+    margin: 25px;
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: .9rem;
+        font-weight: bold;
+    }
+
+    select,
+    input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid var(--color-space-cadet-light);
+        font-size: 1rem;
+
+        &:active {
+            border-color: var(--color-space-cadet);
+        }
+    }
+    
+    &.Advanced {
+        display: block;
+        text-align: center;
+    }
+
+    &-Group {
+        display: flex;
+
+        .Contact-Item { width: 100%; }
     }
 }

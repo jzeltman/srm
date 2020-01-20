@@ -1,6 +1,6 @@
 #Contact-Header {
     flex: 1;
-    background-color: var(--color-space-cadet-lightest);
+    background-color: var(--color-cg-blue-lighter);
     min-height: 80px;
     display: flex;
     align-items: center;
@@ -11,6 +11,6 @@
     }
 
     button {
-        color: var(--color-space-cadet-light);
+        color: var(--color-space-cadet);
     }
 }

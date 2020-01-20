@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter, useParams } from 'react-router-dom';
 
+import './contact.scss';
 
+import ContactUpdates from './updates/contact-updates';
 import FileUpload from '../file-upload/file-upload';
 import { saveContact, savePhoto } from 'Actions/contact';
 import { loading } from 'Actions/ui';
 import { contacts } from 'DB';
-
-import './contact.scss';
 
 const Contact = (props) => {
     let { uid } = useParams();
@@ -123,10 +123,7 @@ const Contact = (props) => {
                     </div>
                 </div>
             </div>
-            <div className="Contact-Item">
-                <label htmlFor="updates">Updates</label>
-                <input type="textarea" defaultValue={contact.updates} name="updates" onChange={onChangeHandler} />
-            </div>
+            <ContactUpdates />
             <div className="Contact-Item">
                 <label htmlFor="action">Actions</label>
                 <input type="textarea" defaultValue={contact.action} name="action" onChange={onChangeHandler} />
@@ -135,21 +132,18 @@ const Contact = (props) => {
     )
 }
 
-const mapStateToProps = state => {
+const propMap = state => {
     return {
         contact: state.contact,
         contacts: state.contacts
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const dispatcher = dispatch => {
     return {
         saveContact: contact => dispatch(saveContact(contact)),
         savePhoto: photo => dispatch(savePhoto(photo))
     }
 }
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Contact);
+export default withRouter(connect(propMap,dispatcher)(Contact));
