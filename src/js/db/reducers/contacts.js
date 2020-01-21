@@ -1,4 +1,10 @@
-import { GET_CONTACTS, SORT_CONTACTS, SAVE_CONTACT, SIGN_OUT_USER } from 'Constants';
+import { 
+    GET_CONTACTS, 
+    SORT_CONTACTS, 
+    SAVE_CONTACT, 
+    SIGN_OUT_USER,
+    CREATE_EMPTY_CONTACT 
+} from 'Constants';
 import sortContacts from 'Utils/sort_contacts';
 
 const contacts = (state = [], action) => {
@@ -25,6 +31,9 @@ const contacts = (state = [], action) => {
             break;
         } case SIGN_OUT_USER: {
             return [];
+            break;
+        } case CREATE_EMPTY_CONTACT: {
+            return state;
             break;
         } default: {
             return state;

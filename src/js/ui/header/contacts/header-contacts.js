@@ -1,12 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
-import { sortContacts } from 'Actions/contacts';
+import { Link, withRouter, useHistory } from 'react-router-dom';
+import { sortContacts, createEmptyContact } from 'Actions/contacts';
 
 import './header-contacts.scss';
 
 const HeaderContacts = props => {
     let contactPage = props.location.pathname.indexOf('/contacts/') === -1
+    let history = useHistory();
+
+    const newContactHandler = () => {
+        createEmptyContact(props.userUID);
+        history.push('/contacts/new')
+    }
+
     const renderElements = () => {
         if (contactPage) {
             return (
@@ -19,9 +26,12 @@ const HeaderContacts = props => {
                         <button title="Grid View">
                             <i className="fas fa-th-large"></i>
                         </button>
-                        <Link to="/contacts/new" title="Add New Contact">
+                        <button 
+                            title="Add New Contact" 
+                            onClick={newContactHandler}
+                        >
                             <i className="fas fa-user-plus"></i>
-                        </Link>
+                        </button>
                         <Link to="/contacts/import" title="Import Contact">
                             <i className="fas fa-file-import"></i>
                         </Link>
@@ -61,6 +71,12 @@ const HeaderContacts = props => {
     <option value="date">Date</option>
 </select> */
 
+const propMap = state => {
+    return {
+        userUID: state.user.uid
+    }
+}
+
 const dispatcher = dispatch => {
     return {
         sortContacts: sort => {
@@ -69,4 +85,4 @@ const dispatcher = dispatch => {
     }
 }
 
-export default withRouter(connect(null,dispatcher)(HeaderContacts));
+export default withRouter(connect(propMap,dispatcher)(HeaderContacts));

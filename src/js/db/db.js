@@ -11,7 +11,7 @@ import { setUser } from 'Actions/user';
 // import { delete as userDelete } from './users/delete';
 import { create as photoCreate } from './photo/create';
 
-import { create as contactCreate } from './contacts/create';
+import { create as contactCreate, createEmpty } from './contacts/create';
 import { read as contactRead, getContactByUID } from './contacts/read';
 import { update as contactUpdate } from './contacts/update';
 import { destroy as contactDestroy } from './contacts/delete';
@@ -29,7 +29,7 @@ db.settings({
 });
   
 db.enablePersistence();
-db.disableNetwork();
+// db.disableNetwork();
 
 firebase.auth().onAuthStateChanged((firebaseUser) => {
     if (firebaseUser) {
