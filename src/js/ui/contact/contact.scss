@@ -2,8 +2,6 @@
     height: 100%;
     flex: 1;
     background-color: var(--color-cg-blue-lighter);
-
-    
     
     button {
         margin: 25px;
@@ -50,36 +48,6 @@
 
         #Contact-Return {
             border-right: 1px solid #ccc;
-        }
-    }
-
-    &-Card {
-        display: flex;
-        border: 1px solid var(--color-space-cadet);
-        background-color: #fff;
-        border-bottom-width: 3px;
-        border-radius: 0 10px 10px 10px;
-        padding: 13px;
-        margin: 0 25px 25px;
-
-        &-Items {
-            flex-grow: 1;
-
-            .Contact-Item {
-                margin: 0 13px 25px 25px;
-
-                label {
-                    font-size: .8rem;
-                }
-                
-                input, select {
-                    border-radius: 0;
-                    border: none;
-                    border-bottom: 1px solid #ccc;
-                    padding: 5px 0;
-                    font-size: 1.1rem;
-                }
-            }
         }
     }
     

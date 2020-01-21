@@ -96,10 +96,6 @@ const Contact = (props) => {
             <div id="Contact">
                 <ContactCard contact={contact} />
                 <ContactUpdates contact={contact} />
-                <div className="Contact-Item">
-                    <label htmlFor="action">Actions</label>
-                    <input type="textarea" defaultValue={contact.action} name="action" onChange={onChangeHandler} />
-                </div>
             </div>
         )
     }

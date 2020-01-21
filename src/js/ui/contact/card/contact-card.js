@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import './contact-card.scss';
+
 const ContactCard = props => {
     let contact = props.contact;
 

@@ -1,12 +1,73 @@
+.Contact-Updates {
+    margin: 0 25px;
+
+    > label {
+        margin-bottom: -1px;
+        background-color: var(--color-cg-blue-lightest);
+        display: inline-block;
+        padding: 13px 13px 7px;
+        border-radius: 10px 10px 0 0;
+        border: 1px solid var(--color-space-cadet);
+        border-bottom-color: var(--color-cg-blue-lightest);
+
+        span {
+            margin-right: 5px;
+        }
+
+        &:not(.selected) {
+            background-color: transparent;
+            color: var(--color-space-cadet);
+            border: none;
+        }
+    }
+
+    input {
+        font-size: 1rem;
+    }
+}
+
 .Contact-Update {
     display: flex;
     align-items: center;
-    margin: 13px 0;
+    margin-top: 5px;
+}
+
+.Contact-Updates-List {
+    background-color: var(--color-cg-blue-lightest);
+    border: 1px solid var(--color-space-cadet);
+    border-radius: 0 10px 10px 10px;
+    padding: 13px;
 
     label {
         margin-bottom: 0;
+        padding: 10px 0;
+        flex-grow: 1;
         font-weight: 900;
         margin-left: 13px;
+        color: var(--color-space-cadet-light);
         order: 2;
+        border-bottom: 1px solid var(--color-space-cadet-lighter);
     }
+
+    input {
+        padding: 10px 0;
+        border: none;
+        border-bottom: 1px solid var(--color-space-cadet-lighter);
+        border-radius: 0;
+        
+        &:not([type=date]) {
+            min-width: 75%;
+        }
+    }
+}
+
+.Contact-Updates-New {
+    display: flex;
+
+    
+}
+
+.Contact-Updates-New input[type="textarea"] {
+    min-width: 75%;
+    margin-right: 15px;
 }

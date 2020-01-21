@@ -22,18 +22,26 @@ let userDataFetched = false;
 
 firebase.initializeApp(config);
 
+export const db = firebase.firestore();
+
+db.settings({
+    cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED
+});
+  
+db.enablePersistence();
+db.disableNetwork();
+
 firebase.auth().onAuthStateChanged((firebaseUser) => {
     if (firebaseUser) {
         store.dispatch(setUser(firebaseUser));
         if (!userDataFetched) {
+            userDataFetched = true;
             contactRead(firebaseUser.uid,(contactsData) => {
                 store.dispatch(getContacts(contactsData))
             });
         }
     } else store.dispatch(setUser(null));
 });
-
-export const db = firebase.firestore();
 
 export const contacts = {
     create: contactCreate,

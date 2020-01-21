@@ -54,6 +54,7 @@ a {
 
 input {
     color: var(--color-space-cadet);
+    background-color: transparent;
 
     &::placeholder {
         color: var(--color-space-cadet-lighter);

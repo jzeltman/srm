@@ -25,13 +25,12 @@
 
             .notifications {
                 position: absolute;
-                background: var(--color-portland-orange);
-                color: #fff;
+                background: #fff;
+                color: var(--color-portland-orange);
                 font-weight: 900;
-                font-size: 9px;
+                font-size: 13px;
                 border-radius: 50px;
                 padding: 6px 5px;
-                border: 2px solid #fff;
                 top: 15%;
                 right: 15%;
                 line-height: 1;
