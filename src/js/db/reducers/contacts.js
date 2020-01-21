@@ -1,11 +1,13 @@
 import { 
     GET_CONTACTS, 
+    SET_CONTACT,
     SORT_CONTACTS, 
     SAVE_CONTACT, 
     SIGN_OUT_USER,
     CREATE_EMPTY_CONTACT 
 } from 'Constants';
 import sortContacts from 'Utils/sort_contacts';
+import { contacts as DBContacts, photos } from 'DB';
 
 const contacts = (state = [], action) => {
     switch (action.type) {
@@ -18,7 +20,7 @@ const contacts = (state = [], action) => {
         } case SORT_CONTACTS: {
             return sortContacts(state,action.sort);
             break;
-        } case SAVE_CONTACT: {
+        } case SET_CONTACT: {
             let exists = false;
             let contacts = [...state].map( contact => {
                 if (action.contact.uid === contact.uid) {
@@ -32,10 +34,14 @@ const contacts = (state = [], action) => {
         } case SIGN_OUT_USER: {
             return [];
             break;
-        } case CREATE_EMPTY_CONTACT: {
+        } case SAVE_CONTACT: {
+            console.log('SAVE_CONTACT:', action)
+            if (action.contact.uid === '') DBContacts.create(action.contact);
+            else DBContacts.update(action.contact);
             return state;
-            break;
-        } default: {
+        }
+        case CREATE_EMPTY_CONTACT:
+        default: {
             return state;
             break;
         }

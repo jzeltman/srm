@@ -4,10 +4,10 @@ export const SIGN_OUT_USER = 'SIGN_OUT_USER';
 export const CREATE_USER = 'CREATE_USER';
 
 export const SET_CONTACT = 'SET_CONTACT';
-export const SAVE_CONTACT = 'SAVE_CONTACT';
 export const SAVE_PHOTO = 'SAVE_PHOTO';
 export const RECEIVE_PHOTO = 'RECEIVE_PHOTO';
 
+export const SAVE_CONTACT = 'SAVE_CONTACT';
 export const GET_CONTACTS = 'GET_CONTACTS';
 export const CREATE_EMPTY_CONTACT = 'CREATE_EMPTY_CONTACT';
 export const RECEIVE_CONTACT = 'RECEIVE_CONTACT';

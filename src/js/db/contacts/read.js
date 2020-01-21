@@ -16,8 +16,7 @@ export const read = (uid,cb) => {
 }
 
 export const getContactByUID = (uid,contacts) => {
-    if (!uid || !contacts) return false;
-    else {
-        return contacts.filter( contact => uid === contact.uid)[0]
-    }
+    if (uid === 'new' || uid === 'import') uid = '';
+    if (!contacts) return false;
+    else return contacts.filter( contact => uid === contact.uid)[0];
 }

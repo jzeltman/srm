@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { setContact } from 'Actions/contacts';
+import Input from 'Components/input/input';
 
 import './contact-card.scss';
 
 const ContactCard = props => {
-    let contact = props.contact;
+    let [contact,setContact] = useState(props.contact);
+
+    useEffect(() => {
+        if (props.contact.uid !== contact.uid) setContact(props.contact);
+    });
 
     let headerBackgroundCSS = contact.PHOTO === '' ?
         { backgroundColor: '#ccc' } :
         { backgroundImage: `url(${contact.PHOTO})` };
 
     const togglePhotoModal = e => console.log('togglePhotoModal',e);
-    const onChangeHandler = e => console.log('onChangeHandler',e);
+    const onChangeHandler = e => {
+        setContact({
+            ...contact,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const onInputBlur = () => {
+        props.save(contact);
+    }
     
     return (
         <div id="Contact-Card">
@@ -23,8 +38,13 @@ const ContactCard = props => {
             </div>
             <div id="Contact-Card-Items">
                 <div className="Contact-Item">
-                    <label htmlFor="FN">Full Name</label>
-                    <input type="text" value={contact.FN} name="FN" onChange={onChangeHandler} />
+                    <Input
+                        name="FN"
+                        label="Full Name"
+                        defaultValue={contact.FN}
+                        onChange={onChangeHandler} 
+                        onBlur={onInputBlur}
+                    />
                 </div>
                 <div className="Contact-Item-Group">
                     <div className="Contact-Item">
@@ -52,8 +72,24 @@ const ContactCard = props => {
                 </div>
                 <div className="Contact-Item-Group">
                     <div className="Contact-Item">
-                        <label htmlFor="last_update">Last Contact</label>
-                        <input type="date" defaultValue={contact.last_update} name="last_update" onChange={onChangeHandler} />
+                        <Input
+                            name="last_update"
+                            label="Last Contact"
+                            defaultValue={contact.last_update}
+                            onChange={onChangeHandler} 
+                            onBlur={onInputBlur}
+                            type="date"
+                        />
+                    </div>
+                    <div className="Contact-Item">
+                        <Input
+                            name="BDAY"
+                            label="Birthday"
+                            defaultValue={contact.BDAY}
+                            onChange={onChangeHandler} 
+                            onBlur={onInputBlur}
+                            type="date"
+                        />
                     </div>
                 </div>
             </div>
@@ -61,11 +97,17 @@ const ContactCard = props => {
     )
 }
 
+const propMap = state => {
+    return {
+        contacts: state.contacts
+    }
+}
+
 const dispatcher = dispatch => {
     return {
-        saveContact: contact => dispatch(saveContact(contact)),
+        save: contact => dispatch(setContact(contact)),
         savePhoto: photo => dispatch(savePhoto(photo))
     }
 }
 
-export default withRouter(connect(null,dispatcher)(ContactCard));
+export default withRouter(connect(propMap,dispatcher)(ContactCard));

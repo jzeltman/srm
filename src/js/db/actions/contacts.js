@@ -1,5 +1,6 @@
 import { 
     GET_CONTACTS, 
+    SET_CONTACT,
     SORT_CONTACTS, 
     SAVE_CONTACT, 
     RECEIVE_CONTACT,
@@ -13,6 +14,10 @@ export const getContacts = contacts => {
 
 export const sortContacts = sort => {
     return { type: SORT_CONTACTS, sort }
+}
+
+export const setContact = (contact) => {
+    return { type: SET_CONTACT, contact }
 }
 
 export const saveContacts = (contact) => {

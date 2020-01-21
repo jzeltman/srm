@@ -1,17 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter, useHistory } from 'react-router-dom';
-import { sortContacts, createEmptyContact } from 'Actions/contacts';
+import { sortContacts, setContact } from 'Actions/contacts';
+import ContactModel from 'Models/contact';
 
 import './header-contacts.scss';
+import contact from '../../contact/contact';
 
 const HeaderContacts = props => {
     let contactPage = props.location.pathname.indexOf('/contacts/') === -1
     let history = useHistory();
 
-    const newContactHandler = () => {
-        createEmptyContact(props.userUID);
-        history.push('/contacts/new')
+    const newContactHandler = (to) => {
+        props.setContact({ ...ContactModel, user: props.userUID });
+        history.push(to)
     }
 
     const renderElements = () => {
@@ -28,13 +30,16 @@ const HeaderContacts = props => {
                         </button>
                         <button 
                             title="Add New Contact" 
-                            onClick={newContactHandler}
+                            onClick={() => newContactHandler('/contacts/new')}
                         >
                             <i className="fas fa-user-plus"></i>
                         </button>
-                        <Link to="/contacts/import" title="Import Contact">
+                        <button 
+                            title="Import Contact" 
+                            onClick={() => newContactHandler('/contacts/import')}
+                        >
                             <i className="fas fa-file-import"></i>
-                        </Link>
+                        </button>
                         <button title="Sort">
                             <i className="fas fa-sort-amount-up"></i>
                         </button>
@@ -79,9 +84,8 @@ const propMap = state => {
 
 const dispatcher = dispatch => {
     return {
-        sortContacts: sort => {
-            dispatch(sortContacts(sort))
-        }
+        sortContacts: sort => dispatch(sortContacts(sort)),
+        setContact: contact => dispatch(setContact(contact))
     }
 }
 
