@@ -5,7 +5,6 @@ import { sortContacts, setContact } from 'Actions/contacts';
 import ContactModel from 'Models/contact';
 
 import './header-contacts.scss';
-import contact from '../../contact/contact';
 
 const HeaderContacts = props => {
     let contactPage = props.location.pathname.indexOf('/contacts/') === -1

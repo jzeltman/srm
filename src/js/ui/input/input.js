@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import './input.scss';
 
 const Input = props => {
-    const {
+    let {
         name,
         label,
         defaultValue,
@@ -17,7 +17,7 @@ const Input = props => {
             <label htmlFor={name}>{label}</label>
             <input 
                 type={type}
-                defaultValue={defaultValue} 
+                value={defaultValue} 
                 name={name}
                 onChange={onChange} 
                 onBlur={onBlur}

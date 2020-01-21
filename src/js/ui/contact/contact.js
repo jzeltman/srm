@@ -11,7 +11,6 @@ import Loading from 'Components/loading/loading';
 import { contacts } from 'DB';
 
 const Contact = (props) => {
-
     if (props.contacts.length === 0) {
         return (
             <div id="Contact" className="loading-wrapper">

@@ -8,9 +8,9 @@ import './contact-card.scss';
 
 const ContactCard = props => {
     let [contact,setContact] = useState(props.contact);
-
+    
     useEffect(() => {
-        if (props.contact.uid !== contact.uid) setContact(props.contact);
+        if (contact.uid !== props.contact.uid) setContact(props.contact);
     });
 
     let headerBackgroundCSS = contact.PHOTO === '' ?
