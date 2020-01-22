@@ -27,9 +27,7 @@ export const db = firebase.firestore();
 db.settings({
     cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED
 });
-  
 db.enablePersistence();
-// db.disableNetwork();
 
 firebase.auth().onAuthStateChanged((firebaseUser) => {
     if (firebaseUser) {

@@ -1,8 +1,8 @@
 import { db } from 'DB';
 
-export const read = (uid,cb) => {
+export const read = (uid,cb,source = 'cache') => {
     return db.collection("contacts").where("user", "==", uid)
-        .get({ source: 'cache' })
+        .get({ source })
         .then((querySnapshot) => {
             let dataArray = [];
             querySnapshot.forEach((doc) => dataArray.push({

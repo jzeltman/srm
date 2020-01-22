@@ -8,7 +8,7 @@ import Logo from '../logo/logo';
 import HeaderToday from './today/header-today';
 import HeaderContacts from './contacts/header-contacts';
 import HeaderContact from './contact/header-contact';
-
+import HeaderUser from './user/header-user';
 
 const Header = (props) => {
     const renderMenu = () => {
@@ -43,6 +43,7 @@ const Header = (props) => {
                     <HeaderContact />
                 </Route>
                 <Route path="/contacts" component={HeaderContacts} />
+                <Route path="/user" component={HeaderUser} />
                 <Route path="/" component={HeaderToday} />
                 <Route>
                     {renderMenu()}

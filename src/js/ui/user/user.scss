@@ -1,78 +1,88 @@
+main[data-route="/user"] {
+    padding: 0 24px 24px;
+}
+
 #User {
-    position: relative;
     display: flex;
-    margin-right: 5px;
-
-    &-Sign-In {
-        cursor: pointer;
-        border: 1px solid transparent;
-        border-radius: 5px;
-        margin: 15px;
-        padding: 7px;
-        padding: 10px;
-
-        &:hover {
-            border-color: #ccc;
-        }
-    }
-
-    &-Photo {
-        height: 40px;
-        width: 40px;
-        border-radius: 5px;
-    }
-
-    &-Name {
+    min-height: 100%;
+    width: 100%;
+    overflow: auto;
+    
+    aside {
+        border-radius: 10px 0 0 10px;
+        background-color: var(--color-space-cadet-lightest);
+        padding: 25px;
+        min-width: 300px;
         display: flex;
         align-items: center;
-        margin: 10px;
+        justify-content: center;
+        flex-direction: column;
+        margin: 1px 0 1px 1px;
 
-        strong {
-            margin-right: 10px;
+        > div {
+            min-width: 100%;
         }
     }
-
-    &-Menu-Button {
+    
+    section {
+        width: 100%;
+        margin: 1px 1px 1px 0;
+        border: 1px solid var(--color-space-cadet-lightest);
         display: flex;
-        border-radius: 5px;
-        border: 1px solid transparent;
-        margin: 10px;
-        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 0 10px 10px 0;
+        padding: 25px;
+    }
 
-        &.open,
+    button {
+        width: 100%;
+        padding: 13px;
+        margin: 13px 0;
+        border-radius: 5px;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--color-portland-orange);
+        font-weight: 900;
+        color: #fff;
+        cursor: pointer;
+        
         &:hover {
-            border-color: #ccc;
-            
-            img {
-                border-radius: 5px 0 0 5px;
+            background-color: var(--color-portland-orange-dark);
+        }
+
+        i {
+            font-size: 1.2rem;
+        }
+
+        &.facebook {
+            background-color: #4267b2;
+            &:hover {
+                background-color: #365899;
             }
         }
 
-        &.open {
-            border-radius: 5px 5px 0 0;
+        &.google {
+            background-color: #4c8bf5;
+            &:hover {
+                background-color: #db3236;
+            }
+        }
+
+        &.signin {
+            background-color: var(--color-june-bug-dark);
+            &:hover {
+                background-color: var(--color-june-bug-darker);
+            }
         }
     }
 
-    &-Menu {
-        position: absolute;
-        top: 41px;
-        list-style: none;
-        margin: 10px;
-        padding: 0;
-        width: calc(100% - 20px);
-        background: #fff;
-        border: 1px solid #ccc;
-        border-top: none;
-        border-radius: 0 0 5px 5px;
-        
-        li {
-            border-top: 1px solid #ccc;
-            padding: 10px;
-            cursor: pointer;
-
-            &:hover {
-                background-color: var(--color-grey-hover);
-            }
-        }
+    hr {
+        border: 1px solid var(--color-space-cadet-lighter);
+        border-bottom: none;
+        margin: 1.5rem 0;
     }
 }

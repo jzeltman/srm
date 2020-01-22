@@ -5,6 +5,7 @@ import { Switch, Route, withRouter,  } from 'react-router-dom';
 import ContactList from 'Components/contact-list/contact-list';
 import Contact from 'Components/contact/contact';
 import Today from 'Components/today/today';
+import User from 'Components/user/user';
 
 import './main.scss';
 import '../../../css/privacy.scss';
@@ -24,13 +25,11 @@ const Main = props => {
                 <Route path="/birthdays">
                     <div>birthdays</div>
                 </Route>
-                <Route path="/user">
-                    <div>user profile</div>
-                </Route>
+                <Route path="/user" component={User} />
                 <Route component={Today} />
             </Switch>
         </main>
     )
 }
 
-export default withRouter(connect(null,null)(Main));
+export default withRouter(connect()(Main));

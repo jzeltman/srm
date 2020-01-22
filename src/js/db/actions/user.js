@@ -18,5 +18,5 @@ export const signIn = () => {
             // provider.addScope();
 
             return firebase.auth().signInWithPopup(provider);
-        })
+        });
 }
