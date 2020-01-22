@@ -9,7 +9,7 @@ const UserSignIn = props => {
         <>
             <aside>
                 <img src={props.user.photoURL} id="User-Photo" />
-                <button className="signout" onClick={props.signOut}>
+                <button className="button signout" onClick={props.signOut}>
                     <span>Sign Out</span>
                     <i className="fas fa-sign-in-alt"></i> 
                 </button>

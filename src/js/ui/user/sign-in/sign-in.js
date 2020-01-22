@@ -12,22 +12,22 @@ const UserSignIn = props => {
         <>
             <aside>
                 <div>
-                    <button className="facebook" onClick={props.signIn}>
+                    <button className="button facebook" onClick={props.signIn}>
                         <span>Continue with Facebook</span>
                         <i className="fab fa-facebook"></i>
                     </button>
-                    <button className="google">
+                    <button className="button google">
                         <span>Continue with Google</span>
                         <i className="fab fa-google"></i>
                     </button>
                     <hr />
-                    <button className="signup">
+                    <button className="button signup">
                         <span>Sign Up with Email</span>
                         <i className="fas fa-envelope"></i>
                     </button>
                     <hr/>
                     <strong>Already have an account?</strong>
-                    <button className="signin">
+                    <button className="button signin">
                         <span>Sign In</span>
                         <i className="fas fa-sign-in-alt"></i> 
                     </button>

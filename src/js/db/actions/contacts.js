@@ -7,6 +7,8 @@ import {
     CREATE_EMPTY_CONTACT 
 } from 'Constants';
 import { createEmpty } from 'CRUD/contacts/create';
+import { read } from 'CRUD/contacts/read';
+import store from 'Store';
 
 export const getContacts = contacts => {
     return { type: GET_CONTACTS, contacts }
@@ -32,4 +34,10 @@ export const createEmptyContact = (userUID) => {
 
 export const receiveContact = (contact) => {
     return { type: RECEIVE_CONTACT, contact }
+}
+
+export const syncData = (uid) => {
+    read(uid,(contactsData) => {
+        store.dispatch(getContacts(contactsData))
+    },'server');
 }

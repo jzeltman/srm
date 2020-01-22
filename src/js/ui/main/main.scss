@@ -126,3 +126,91 @@ button {
 //     display: flex;
 //     flex-direction: column;
 // }
+
+main {
+    .sidebar {
+        display: flex;
+        min-height: 100%;
+        width: 100%;
+        overflow: auto;
+    }
+
+    aside {
+        border-radius: 10px 0 0 10px;
+        background-color: var(--color-space-cadet-lightest);
+        padding: 25px;
+        min-width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 1px 0 1px 1px;
+
+        > div {
+            min-width: 100%;
+        }
+    }
+    
+    section {
+        width: 100%;
+        margin: 1px 1px 1px 0;
+        border: 1px solid var(--color-space-cadet-lightest);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 0 10px 10px 0;
+        padding: 25px;
+    }
+}
+
+.fas.fa-sync-alt.true {
+    animation:spin 3s linear infinite;
+}
+
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.button {
+    width: 100%;
+    padding: 13px;
+    margin: 13px 0;
+    border-radius: 5px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-portland-orange);
+    font-weight: 900;
+    color: #fff;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: var(--color-portland-orange-dark);
+    }
+
+    i {
+        font-size: 1.2rem;
+        margin-left: .5rem;
+    }
+
+    &.primary {
+        background-color: var(--color-portland-orange);
+        &:hover {
+            background-color: var(--color-portland-orange-dark);
+        }
+    }
+
+    &.secondary {
+        background-color: var(--color-space-cadet-lighter);
+        &:hover {
+            background-color: var(--color-space-cadet-light);
+        }
+    }
+
+    &.tertiary {
+        background-color: var(--color-june-bug);
+        &:hover {
+            background-color: var(--color-june-bug-dark);
+        }
+    }
+}
