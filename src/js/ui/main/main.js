@@ -4,7 +4,7 @@ import { Switch, Route, withRouter,  } from 'react-router-dom';
 
 import ContactList from 'Components/contact-list/contact-list';
 import Contact from 'Components/contact/contact';
-import Today from 'Components/today/today';
+import Dashboard from 'Components/dashboard/dashboard';
 import User from 'Components/user/user';
 
 import './main.scss';
@@ -26,7 +26,7 @@ const Main = props => {
                     <div>birthdays</div>
                 </Route>
                 <Route path="/user" component={User} />
-                <Route component={Today} />
+                <Route component={Dashboard} />
             </Switch>
         </main>
     )

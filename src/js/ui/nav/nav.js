@@ -8,22 +8,6 @@ import './nav.scss';
 
 const Nav = props => {
 
-    const renderUserOrSettings = () => {
-        if (props.ui.orientation === 'landscape') {
-            return (
-                <Link to="/user">
-                    <i className="fas fa-user-circle"></i>
-                </Link>
-            )
-        } else {
-            return (
-                <Link to="/user">
-                    <i className="fas fa-cogs"></i>
-                </Link>
-            )
-        }
-    }
-
     const renderNotifications = count => {
         if (count !== 0) return <span className="notifications">{count}</span>
         else return <></>;
@@ -31,7 +15,7 @@ const Nav = props => {
 
     return (
         <nav id="Nav">
-            {props.ui.deviceClass === 'mobile' ? <></> : <Logo /> }
+            <Logo />
             <ul>
                 <li className={props.location.pathname === '/' ? 'selected' : ''}>
                     <Link to="/">
@@ -44,18 +28,10 @@ const Nav = props => {
                         <i className="fas fa-address-book"></i>
                     </Link>
                 </li>
-                <li className={props.location.pathname === '/actions' ? 'selected' : ''}>
-                    <Link to="/actions">
-                        <i className="fas fa-bell"></i>
-                    </Link>
-                </li>
-                <li className={props.location.pathname === '/birthdays' ? 'selected' : ''}>
-                    <Link to="/birthdays">
-                        <i className="fas fa-birthday-cake"></i>
-                    </Link>
-                </li>
                 <li className={props.location.pathname === '/user' ? 'selected' : ''}>
-                    {renderUserOrSettings()}
+                    <Link to="/user">
+                        <i className="fas fa-user-circle"></i>
+                    </Link>
                 </li>
             </ul>
         </nav>

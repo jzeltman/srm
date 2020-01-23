@@ -1,14 +1,43 @@
-#Dashboard {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
+#Dashboard-Aside {
+    div {
+        min-height: 50%;
+
+        h2 {
+            margin: 0 0 25px;
+
+            span {
+                margin-right: 13px;
+            }
+        }
+    }
 }
 
-#Dashboard-Content {
-    flex-basis: 70%;
-    overflow: auto;
+#Dashboard-Section {
+    padding: 0;
+    display: flex;
 
-    @media (min-width: 700px) {
-        flex-basis: calc(100% - 300px);
+    @media (min-width:800px) and (max-width: 1450px) {
+        flex-direction: column;
+    }
+
+    @media (min-width: 1450px) {
+        flex-direction: row;
+    }
+}
+
+#Dashboard-Suggestions {
+    background-color: var(--color-cg-blue-lighter);
+    padding: 25px;
+    
+    @media (max-width: 1450px) {
+        min-width: 100%;
+        border-radius: 0 0 10px 0;
+        min-height: 250px;
+        margin: 25px 0 0 0;
+    }
+    
+    @media (min-width: 1450px) {
+        border-radius: 0 10px 10px 0;
+        min-height: 100%;
     }
 }

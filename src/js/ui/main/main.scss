@@ -76,6 +76,14 @@ input {
 
         #Header {
             width: calc(100vw - 80px);
+
+            header {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 25px;
+            }
         }
 
         main {
@@ -85,9 +93,10 @@ input {
             left: 80px;
             top: 80px;
 
-            &[data-route^='/contacts/'] {
+            &:not([data-route="/contacts"]) {
                 display: flex;
                 flex-direction: row;
+                padding: 0 24px 24px;
             }
 
             & > div {
@@ -161,7 +170,10 @@ main {
         flex-direction: column;
         border-radius: 0 10px 10px 0;
         padding: 25px;
+        overflow: auto;
     }
+
+    &[data-route="/"] section { display: block; }
 }
 
 .fas.fa-sync-alt.true {

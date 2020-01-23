@@ -1,0 +1,91 @@
+#Dashboard-List-Contact-Grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 25px;
+    row-gap: 25px;
+    padding: 25px;
+    width: 100%;
+    overflow: auto;
+
+    @media (max-width:1000px) {
+        grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 1350px) and (max-width:1450px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width:1625px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    // @media (min-width: 1450px) {
+    //     grid-template-columns: repeat(2, 1fr);
+    // }
+}
+
+.Dashboard-List-Contact-Grid-Item {
+    min-height: 250px;
+    background-size: contain;
+    background-position: center -30px;
+    border-radius: 10px;
+    border: 1px solid var(--color-space-cadet-lightest);
+    border-bottom-width: 3px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+
+    &.empty {
+        background-color: var(--color-space-cadet-lightest);
+        position: relative;
+
+        > i {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem;
+            color: var(--color-space-cadet-lighter);
+        }
+    }
+
+    div {
+        background: #fff;
+        width: 100%;
+
+        h4 {
+            margin: 13px;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-evenly;
+            border-top: 1px solid var(--color-space-cadet-lightest);
+
+            button {
+                padding: 13px;
+                cursor: pointer;
+                font-size: .9rem;
+                flex: 1;
+                color: var(--color-space-cadet-light);
+
+                &.contacted {
+                    flex: 0;
+                    padding: 13px 16px;
+                }
+
+                span {
+                    margin-left: 7px;
+                }
+
+                &:hover {
+                    background-color: var(--color-space-cadet-lightest);
+                }
+
+                & + button {
+                    border-left: 1px solid var(--color-space-cadet-lightest);
+                }
+            }
+        }
+    }
+}
