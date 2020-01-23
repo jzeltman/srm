@@ -30,10 +30,18 @@ const List = props => {
             props.location.pathname.indexOf('/contacts/') === -1
         ) {
             return (
-                <div>
-                    <span className="Contact-Tag --Frequency">{contact.frequency}</span>
-                    <span className="Contact-Tag --Group">{contact.group}</span>
-                </div>
+                <>
+                    <div>
+                        {!contact.BDAY ? <></> :
+                            <span className="Contact-Tag --BDAY">
+                                <span>{contact.BDAY}</span>
+                                <i className="fas fa-birthday-cake"></i>
+                            </span>
+                        }
+                        <span className="Contact-Tag --Frequency">{contact.frequency}</span>
+                        <span className="Contact-Tag --Group">{contact.group}</span>
+                    </div>
+                </>
             )
         }
     }
@@ -94,12 +102,9 @@ const List = props => {
     }
 
     return (
-        <section>
-            <ul id="Contact-List-Items">
-                {groupedList()}
-            </ul>
-        </section>
-        
+        <ul id="Contact-List-Items">
+            {groupedList()}
+        </ul>
     )
 }
 
