@@ -99,6 +99,12 @@ input {
                 padding: 0 24px 24px;
             }
 
+            &[data-route^="/contacts/"] {
+                display: flex;
+                flex-direction: row;
+                padding: 0;
+            }
+
             & > div {
                 overflow: auto;
             }
