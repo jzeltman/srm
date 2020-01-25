@@ -4,7 +4,8 @@ import {
     SORT_CONTACTS, 
     SAVE_CONTACT, 
     SIGN_OUT_USER,
-    CREATE_EMPTY_CONTACT 
+    CREATE_EMPTY_CONTACT,
+    UPDATE_CONTACT
 } from 'Constants';
 import sortContacts from 'Utils/sort_contacts';
 import { contacts as DBContacts, photos } from 'DB';
@@ -39,6 +40,19 @@ const contacts = (state = [], action) => {
             if (action.contact.uid === '') DBContacts.create(action.contact);
             else DBContacts.update(action.contact);
             return state;
+        }
+        case UPDATE_CONTACT: {
+            return [
+                ...state.map( contact => {
+                    if (contact.uid !== action.contact.uid) return contact;
+                    else {
+                        return {
+                            ...action.contact,
+                            last_update: action.date
+                        }
+                    }
+                })
+            ];
         }
         case CREATE_EMPTY_CONTACT:
         default: {

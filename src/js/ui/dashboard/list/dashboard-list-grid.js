@@ -1,11 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { contactedToday } from 'Actions/contacts';
+import { Link, withRouter } from 'react-router-dom';
 
 const GridItem = props => {
     console.log('GridItem props:', props);
     let style = { backgroundImage: `url(${props.contact.PHOTO})` }
     return (
-        <li key={props.key}
+        <Link 
+            key={props.key}
+            to={`/contacts/${props.contact.uid}`}
             className={`Dashboard-List-Contact-Grid-Item ${props.contact.PHOTO ? 'photo' : 'empty'}`}
             style={style}
         >
@@ -13,7 +17,10 @@ const GridItem = props => {
             <div>
                 <h4>{props.contact.FN}</h4>
                 <footer>
-                    <button className="contacted">
+                    <button 
+                        className="contacted"
+                        onClick={() => props.contacted(props.contact)}
+                    >
                         <i className="far fa-check-square"></i>
                     </button>
                     <button className="add-update">
@@ -26,8 +33,14 @@ const GridItem = props => {
                     </button>
                 </footer>
             </div>
-        </li>
+        </Link>
     )
 }
 
-export default connect()(GridItem);
+const dispatcher = dispatch => {
+    return {
+        contacted: contact => dispatch(contactedToday(contact))
+    }
+}
+
+export default connect(null,dispatcher)(GridItem);
