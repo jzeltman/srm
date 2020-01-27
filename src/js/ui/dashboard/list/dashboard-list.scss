@@ -70,6 +70,12 @@
 
         h4 {
             margin: 13px;
+            display: flex;
+            justify-content: space-between;
+
+            i {
+                margin-left: 15px;
+            }
         }
 
         > footer {

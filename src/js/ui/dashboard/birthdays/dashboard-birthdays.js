@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom';
+import { isContactsBirthday } from 'Utils/birthday';
+
 
 import timeToContact from 'Utils/timeToContact';
 
@@ -16,7 +18,13 @@ const DashboardBirthdays = props => {
     else {
         markup = (
             <ul>
-                {contacts.map((contact,key) => <li key={key}>{contact.FN}</li>)}
+                {contacts.filter(contact => isContactsBirthday(contact)).map((contact,key) => (
+                    <li key={key}>
+                        <Link to={`/contacts/${contact.uid}`}>
+                            {contact.FN}
+                        </Link>
+                    </li>
+                ))}
             </ul>
         );
     }

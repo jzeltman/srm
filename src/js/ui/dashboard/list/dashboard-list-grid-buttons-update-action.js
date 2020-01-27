@@ -5,6 +5,7 @@ import { updateAndSaveContact } from 'Actions/contacts';
 const DashboardGridUpdateAction = props => {
     let [text,setText] = useState(props.defaultText);
     let [date,setDate] = useState(props.defaultDate);
+    console.log('date:', date)
 
     const updateHandler = () => {
         props.update(props.contact,props.contactKey,{ date: date, update: text });

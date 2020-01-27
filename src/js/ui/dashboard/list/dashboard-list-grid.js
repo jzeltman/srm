@@ -3,10 +3,15 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import DashboardGridButtons from './dashboard-list-grid-buttons';
 import DashboardGridUpdateAction from './dashboard-list-grid-buttons-update-action';
+import { isContactsBirthday } from 'Utils/birthday';
 
 const GridItem = props => {
     let [expanded,setExpanded] = useState(false);
     let footerMarkup;
+    let date = new Date();
+    let defaultDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, 0)}-${date.getDate().toString().padStart(2, 0)}`;
+    let isBirthdate = isContactsBirthday(props.contact);
+    let hasActions = false;
     let style = { backgroundImage: `url(${props.contact.PHOTO})` };
     let liClassName = 'Dashboard-List-Contact-Grid-Item';
 
@@ -22,7 +27,7 @@ const GridItem = props => {
             contact={props.contact} 
             setExpanded={setExpanded} 
             defaultText="My update is..."
-            defaultDate={new Date().toISOString().substr(0,10)}
+            defaultDate={defaultDate}
             buttonText="Update +"
             buttonIconClass="far fa-sticky-note"
             contactKey="updates"
@@ -34,13 +39,15 @@ const GridItem = props => {
             contact={props.contact} 
             setExpanded={setExpanded} 
             defaultText="My action is..."
-            defaultDate={new Date().toISOString().substr(0,10)}
+            defaultDate={defaultDate}
             buttonText="Action +"
             buttonIconClass="far fa-bell"
             contactKey="action"
             dateLabel="Remind Me On:"
         />;
     }
+
+
 
     return (
         <li 
@@ -51,7 +58,13 @@ const GridItem = props => {
             {props.contact.PHOTO ? <></> : <i className="fas fa-user-circle"></i>}
             <div>
                 <Link to={`/contacts/${props.contact.uid}`}>
-                    <h4>{props.contact.FN}</h4>
+                    <h4>
+                        <span>{props.contact.FN}</span>
+                        <span>
+                            {hasActions ? <i className="fas fa-bell"></i> : <></>}
+                            {isBirthdate ? <i className="fas fa-birthday-cake"></i> : <></>}
+                        </span>
+                    </h4>
                 </Link>
                 {footerMarkup}
             </div>
