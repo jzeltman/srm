@@ -7,6 +7,10 @@ import DashboardList from './list/dashboard-list';
 import DashboardActions from './actions/dashboard-actions';
 import DashboardBirthdays from './birthdays/dashboard-birthdays';
 
+// <aside id="Dashboard-Suggestions">
+                //     <h2>Suggested Contact</h2>
+                // </aside>
+
 const Dashboard = (props) => {
 
     return (
@@ -17,9 +21,6 @@ const Dashboard = (props) => {
             </aside>
             <section id="Dashboard-Section">
                 <DashboardList />
-                <aside id="Dashboard-Suggestions">
-                    <h2>Suggested Contact</h2>
-                </aside>
             </section>
         </>
     )

@@ -17,10 +17,8 @@ const contacts = (state = [], action) => {
                 ...state,
                 ...sortContacts(action.contacts,'alpha')
             ];
-            break;
         } case SORT_CONTACTS: {
             return sortContacts(state,action.sort);
-            break;
         } case SET_CONTACT: {
             let exists = false;
             let contacts = [...state].map( contact => {
@@ -31,12 +29,9 @@ const contacts = (state = [], action) => {
             });
             if (!exists) contacts.push(action.contact);
             return sortContacts(contacts,'alpha');
-            break;
         } case SIGN_OUT_USER: {
             return [];
-            break;
         } case SAVE_CONTACT: {
-            console.log('SAVE_CONTACT:', action)
             if (action.contact.uid === '') DBContacts.create(action.contact);
             else DBContacts.update(action.contact);
             return state;
@@ -46,9 +41,18 @@ const contacts = (state = [], action) => {
                 ...state.map( contact => {
                     if (contact.uid !== action.contact.uid) return contact;
                     else {
-                        return {
-                            ...action.contact,
-                            last_update: action.date
+                        if (action.key !== 'updates' && action.key !== 'action') {
+                            return {
+                                ...action.contact,
+                                [action.key]: action.value
+                            }
+                        } else {
+                            let newValue = [...contact[action.key]]
+                            newValue.unshift(action.value)
+                            return {
+                                ...action.contact,
+                                [action.key]: newValue
+                            }
                         }
                     }
                 })
@@ -57,7 +61,6 @@ const contacts = (state = [], action) => {
         case CREATE_EMPTY_CONTACT:
         default: {
             return state;
-            break;
         }
     }
 };

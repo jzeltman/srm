@@ -1,46 +1,62 @@
-import React from 'react';
-import { connect } from 'react-redux'
-import { contactedToday } from 'Actions/contacts';
-import { Link, withRouter } from 'react-router-dom';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import DashboardGridButtons from './dashboard-list-grid-buttons';
+import DashboardGridUpdateAction from './dashboard-list-grid-buttons-update-action';
 
 const GridItem = props => {
-    console.log('GridItem props:', props);
-    let style = { backgroundImage: `url(${props.contact.PHOTO})` }
+    let [expanded,setExpanded] = useState(false);
+    let footerMarkup;
+    let style = { backgroundImage: `url(${props.contact.PHOTO})` };
+    let liClassName = 'Dashboard-List-Contact-Grid-Item';
+
+    if (props.contact.PHOTO) liClassName += ' photo';
+    else liClassName += ' empty';
+    if (expanded) liClassName += ' expanded';
+
+    if (!expanded) {
+        footerMarkup = <DashboardGridButtons contact={props.contact} setExpanded={setExpanded} />;
+    }
+    if (expanded === 'update') {
+        footerMarkup = <DashboardGridUpdateAction 
+            contact={props.contact} 
+            setExpanded={setExpanded} 
+            defaultText="My update is..."
+            defaultDate={new Date().toISOString().substr(0,10)}
+            buttonText="Update +"
+            buttonIconClass="far fa-sticky-note"
+            contactKey="updates"
+            dateLabel="Update Date:"
+        />;
+    }
+    if (expanded === 'action') {
+        footerMarkup = <DashboardGridUpdateAction 
+            contact={props.contact} 
+            setExpanded={setExpanded} 
+            defaultText="My action is..."
+            defaultDate={new Date().toISOString().substr(0,10)}
+            buttonText="Action +"
+            buttonIconClass="far fa-bell"
+            contactKey="action"
+            dateLabel="Remind Me On:"
+        />;
+    }
+
     return (
-        <Link 
+        <li 
             key={props.key}
-            to={`/contacts/${props.contact.uid}`}
-            className={`Dashboard-List-Contact-Grid-Item ${props.contact.PHOTO ? 'photo' : 'empty'}`}
+            className={liClassName}
             style={style}
         >
             {props.contact.PHOTO ? <></> : <i className="fas fa-user-circle"></i>}
             <div>
-                <h4>{props.contact.FN}</h4>
-                <footer>
-                    <button 
-                        className="contacted"
-                        onClick={() => props.contacted(props.contact)}
-                    >
-                        <i className="far fa-check-square"></i>
-                    </button>
-                    <button className="add-update">
-                        <i className="far fa-sticky-note"></i>
-                        <span>Update +</span>
-                    </button>
-                    <button className="add-action">
-                        <i className="far fa-bell"></i>
-                        <span>Action +</span>
-                    </button>
-                </footer>
+                <Link to={`/contacts/${props.contact.uid}`}>
+                    <h4>{props.contact.FN}</h4>
+                </Link>
+                {footerMarkup}
             </div>
-        </Link>
+        </li>
     )
 }
 
-const dispatcher = dispatch => {
-    return {
-        contacted: contact => dispatch(contactedToday(contact))
-    }
-}
-
-export default connect(null,dispatcher)(GridItem);
+export default connect()(GridItem);
